@@ -55,13 +55,10 @@ class RenderSystem(private val stage:Stage,private val imageCmps: ComponentMappe
         }
     }
 
-    override fun onTickEntity(entity: Entity) {
-        imageCmps[entity].image.toFront()
-    }
-
     override fun handle(event: Event?): Boolean {
         when (event) {
              is MapChangeEvent -> {
+                 mapRenderer.map = event.map
                  bgdLayers.clear()
                  fgdLayers.clear()
 
@@ -76,5 +73,12 @@ class RenderSystem(private val stage:Stage,private val imageCmps: ComponentMappe
             }
         }
         return false
+    }
+    override fun onTickEntity(entity: Entity) {
+        imageCmps[entity].image.toFront()
+    }
+
+    override fun onDispose() {
+        mapRenderer.dispose()
     }
 }
