@@ -3,7 +3,7 @@ package com.github.moonstruck.capooadventure.component
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.github.quillraven.fleks.Entity
-import java.awt.event.ComponentListener
+import com.github.quillraven.fleks.ComponentListener
 
 class ImageComponent: Comparable<ImageComponent> {
     lateinit var image: Image
@@ -16,7 +16,7 @@ class ImageComponent: Comparable<ImageComponent> {
         }
     }
     companion object{
-        class ImageComponentListener(private val stage: Stage) : com.github.quillraven.fleks.ComponentListener<ImageComponent>
+        class ImageComponentListener(private val stage: Stage) : ComponentListener<ImageComponent>
         {
             override fun onComponentAdded(entity: Entity, component: ImageComponent) {
                 stage.addActor(component.image)

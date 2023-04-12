@@ -49,28 +49,6 @@ class GameScreen : KtxScreen {
         }
         val tiledMap = TmxMapLoader().load("map.tmx")
         stage.fire(MapChangeEvent(tiledMap))
-
-        world.entity{
-            add<ImageComponent>{
-                image = Image().apply {
-                    setSize(4f,4f)
-                }
-            }
-            add<AnimationComponent>{
-                nextAnimation(AnimationActor.PLAYER,AnimationType.IDLE)
-            }
-        }
-        world.entity{
-            add<ImageComponent>{
-                image = Image().apply {
-                    setSize(4f,4f)
-                    setPosition(12f,0f)
-                }
-            }
-            add<AnimationComponent>{
-                nextAnimation(AnimationActor.SLIME,AnimationType.RUN)
-            }
-        }
     }
     override fun render(delta: Float) {
         world.update(delta)
