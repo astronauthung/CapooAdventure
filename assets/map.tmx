@@ -18,10 +18,22 @@
   </data>
  </layer>
  <objectgroup id="7" name="entities">
-  <object id="68" name="Player" gid="122" x="98.5" y="251" width="48" height="48"/>
-  <object id="69" name="Slime" gid="123" x="175.5" y="252" width="32" height="32"/>
+  <object id="68" name="Player" gid="122" x="98.5" y="251" width="48" height="48">
+   <properties>
+    <property name="type" value="Player"/>
+   </properties>
+  </object>
+  <object id="69" name="Slime" gid="123" x="175.5" y="252" width="32" height="32">
+   <properties>
+    <property name="type" value="Slime"/>
+   </properties>
+  </object>
   <object id="70" name="Slime" gid="123" x="156" y="289" width="32" height="32"/>
   <object id="71" name="Slime" gid="123" x="99.5" y="293" width="32" height="32"/>
-  <object id="72" name="Slime" gid="123" x="83" y="202.5" width="32" height="32"/>
+  <object id="72" name="Slime" gid="123" x="83" y="202.5" width="32" height="32">
+   <properties>
+    <property name="type" value="Slime"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

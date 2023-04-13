@@ -6,7 +6,7 @@ import ktx.math.vec2
 data class SpawnCfg (val model : AnimationActor, )
 
 class SpawnComponent {
-    var type : String = ""
+    var name : String = ""
     var location : Vector2 = vec2()
 
 }
