@@ -2,18 +2,22 @@ package com.github.moonstruck.capooadventure.system
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.math.Vector2
+import com.badlogic.gdx.physics.box2d.BodyDef
+import com.badlogic.gdx.physics.box2d.World
 import com.badlogic.gdx.scenes.scene2d.Event
 import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.badlogic.gdx.utils.Scaling
 import com.github.moonstruck.capooadventure.CapooAdventure.Companion.UNIT_SCALE
 import com.github.moonstruck.capooadventure.component.*
+import com.github.moonstruck.capooadventure.component.PhysicComponent.Companion.physicsCmpFromImage
 import com.github.moonstruck.capooadventure.event.MapChangeEvent
 import com.github.quillraven.fleks.AllOf
 import com.github.quillraven.fleks.ComponentMapper
 import com.github.quillraven.fleks.Entity
 import com.github.quillraven.fleks.IteratingSystem
 import ktx.app.gdxError
+import ktx.box2d.box
 import ktx.math.vec2
 import ktx.tiled.layer
 import ktx.tiled.x
@@ -22,6 +26,7 @@ import ktx.tiled.y
 
 @AllOf([SpawnComponent::class])
 class EntitySpawnSystem(
+    private val phWorld: World,
     private val atlas: TextureAtlas,
     private val spawnCmps:ComponentMapper<SpawnComponent>,
 ) : EventListener, IteratingSystem() {
@@ -34,7 +39,7 @@ class EntitySpawnSystem(
             val relativeSize = size(cfg.model)
 
             world.entity {
-                add<ImageComponent> {
+                val imageCmp = add<ImageComponent> {
                     image = Image().apply {
                         setPosition(location.x, location.y)
                         setSize(relativeSize.x, relativeSize.y)
@@ -43,6 +48,15 @@ class EntitySpawnSystem(
                 }
                 add<AnimationComponent> {
                     nextAnimation(cfg.model, AnimationType.IDLE)
+                }
+
+                physicsCmpFromImage(phWorld, imageCmp.image, BodyDef.BodyType.DynamicBody) {phCmp, width, height ->
+                    box(width, height) {
+                        //cam bien de doc layer nao khong the tuong tac
+                        //may cai cay, cuc da,...
+                        //player kh the va cham vs no
+                        isSensor = false
+                    }
                 }
             }
 
