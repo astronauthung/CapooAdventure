@@ -1,5 +1,6 @@
 package com.github.moonstruck.capooadventure.screen
 
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.utils.viewport.ExtendViewport
 import com.github.moonstruck.capooadventure.Ui.View.GameView
@@ -10,7 +11,9 @@ import ktx.scene2d.Scene2DSkin
 import ktx.scene2d.actors
 
 class UiScreen : KtxScreen {
-    private val stage: Stage = Stage(ExtendViewport(16f,9f))
+    private val stage: Stage = Stage(ExtendViewport(180f,320f))
+
+
     init {
         loadSkin()
     }
@@ -20,6 +23,8 @@ class UiScreen : KtxScreen {
     }
 
     override fun render(delta: Float) {
+        Gdx.input.inputProcessor = stage
+
         stage.act()
         stage.draw()
     }
