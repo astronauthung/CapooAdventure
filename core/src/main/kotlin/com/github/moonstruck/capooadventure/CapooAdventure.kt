@@ -1,6 +1,7 @@
 package com.github.moonstruck.capooadventure
 
 import com.github.moonstruck.capooadventure.screen.GameScreen
+import com.github.moonstruck.capooadventure.screen.UiScreen
 import ktx.app.KtxGame
 import ktx.app.KtxScreen
 
@@ -8,7 +9,8 @@ import ktx.app.KtxScreen
 class CapooAdventure : KtxGame<KtxScreen>() {
     override fun create() {
         addScreen(GameScreen())
-        setScreen<GameScreen>()
+        addScreen(UiScreen())
+        setScreen<UiScreen>()
 
     }
     companion object {
