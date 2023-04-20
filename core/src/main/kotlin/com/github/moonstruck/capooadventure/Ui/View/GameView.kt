@@ -12,18 +12,17 @@ class GameView(
     skin: Skin,
     model : GameModel
     ) : Table(skin), KTable {
-    val touchPad = touchpad(0f){ cell ->
-        this.onChangeEvent {  }
-        cell.expand()
-            .align(Align.left)
-            .bottom()
-            .pad(-10f,-170f,-70f,5f)
-    }
     init {
         setFillParent(true)
         table{
             bottomTableCell ->
-            this@GameView.touchPad
+            touchpad(0f){ cell ->
+                this.onChangeEvent {  }
+                cell.expand()
+                    .align(Align.left)
+                    .bottom()
+                    .pad(-10f,-170f,-70f,5f)
+            }
         }
     }
 }

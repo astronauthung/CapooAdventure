@@ -13,7 +13,6 @@ import com.github.moonstruck.capooadventure.component.ImageComponent
 import com.github.moonstruck.capooadventure.component.PhysicComponent
 import com.github.moonstruck.capooadventure.event.MapChangeEvent
 import com.github.moonstruck.capooadventure.event.fire
-import com.github.moonstruck.capooadventure.input.gdxInputProcessor
 import com.github.moonstruck.capooadventure.system.*
 import com.github.quillraven.fleks.world
 import ktx.app.KtxScreen
@@ -26,6 +25,7 @@ import ktx.scene2d.actors
 import com.github.moonstruck.capooadventure.CapooAdventure
 import com.github.moonstruck.capooadventure.Ui.View.gameView
 import com.github.moonstruck.capooadventure.Ui.model.GameModel
+import com.github.moonstruck.capooadventure.input.gdxInputProcessor
 import java.time.Clock.system
 
 class GameScreen(game : CapooAdventure) : KtxScreen {
