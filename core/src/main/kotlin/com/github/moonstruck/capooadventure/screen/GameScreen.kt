@@ -25,8 +25,10 @@ import ktx.scene2d.actors
 import com.github.moonstruck.capooadventure.CapooAdventure
 import com.github.moonstruck.capooadventure.Ui.View.gameView
 import com.github.moonstruck.capooadventure.Ui.model.GameModel
+import com.github.moonstruck.capooadventure.component.MoveComponent
 import com.github.moonstruck.capooadventure.input.PlayerInputProcessor
 import com.github.moonstruck.capooadventure.input.gdxInputProcessor
+import com.github.quillraven.fleks.ComponentMapper
 
 class GameScreen(game : CapooAdventure) : KtxScreen {
     private val gameStage = game.gameStage
@@ -52,11 +54,11 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
 
         systems {
             add<EntitySpawnSystem>()
+            add<MoveSystem>()
             add<PhysicSystem>()
             add<AnimationSystem>()
             add<RenderSystem>()
             add<DebugSystem>()
-            add<MoveSystem>()
         }
     }
 
@@ -66,10 +68,6 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
             if (system is EventListener) {
                 gameStage.addListener(system)
             }
-        }
-        gdxInputProcessor(uiStage)
-        uiStage.actors {
-            gameView(GameModel(eWorld,gameStage))
         }
     }
     override fun resize(width: Int, height: Int) {
@@ -83,7 +81,14 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
         currentMap = TmxMapLoader().load("map.tmx")
         gameStage.fire(MapChangeEvent(currentMap!!))
 
+
         PlayerInputProcessor(eWorld, eWorld.mapper())
+
+        uiStage.actors {
+            gameView(GameModel(eWorld,gameStage, PlayerInputProcessor(eWorld,eWorld.mapper())))
+        }
+        gdxInputProcessor(uiStage)
+
     }
     override fun render(delta: Float) {
         eWorld.update(delta.coerceAtMost(0.25f))

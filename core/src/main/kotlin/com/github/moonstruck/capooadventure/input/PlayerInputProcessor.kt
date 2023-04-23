@@ -1,10 +1,10 @@
 package com.github.moonstruck.capooadventure.input
 
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.Input
 import com.badlogic.gdx.Input.Keys.*
 import com.badlogic.gdx.InputMultiplexer
 import com.badlogic.gdx.InputProcessor
+import com.badlogic.gdx.math.MathUtils
 import com.github.moonstruck.capooadventure.component.MoveComponent
 import com.github.moonstruck.capooadventure.component.PlayerComponent
 import com.github.quillraven.fleks.ComponentMapper
@@ -28,7 +28,17 @@ class PlayerInputProcessor(
     private fun Int.isMovementkey(): Boolean {
         return this == UP || this == DOWN || this == RIGHT || this == LEFT
     }
-    private fun updatePlayerMovement() {
+
+
+    fun touchpadMove(x:Float,y:Float){
+        val angle = MathUtils.atan2(y,x)
+        val cos = MathUtils.cos(angle)
+        val sin = MathUtils.sin(angle)
+
+        updatePlayerMovement(sin,cos)
+    }
+
+    private fun updatePlayerMovement(playerSin: Float, playerCos: Float) {
         playerEntities.forEach { player ->
             with(moveCmps[player]) {
                 cos = playerCos
@@ -45,7 +55,7 @@ class PlayerInputProcessor(
                 RIGHT -> playerCos = 1f
                 LEFT -> playerCos = -1f
             }
-            updatePlayerMovement()
+            updatePlayerMovement(playerSin,playerCos)
             return true
         }
         return false
@@ -58,7 +68,7 @@ class PlayerInputProcessor(
                 RIGHT -> playerCos = if (Gdx.input.isKeyPressed(DOWN)) -1f else 0f
                 LEFT -> playerCos = if (Gdx.input.isKeyPressed(DOWN)) 1f else 0f
             }
-            updatePlayerMovement()
+            updatePlayerMovement(playerSin, playerCos)
             return true
         }
         return false

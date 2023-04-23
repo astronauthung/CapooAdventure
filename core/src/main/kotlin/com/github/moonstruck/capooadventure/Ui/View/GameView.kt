@@ -17,7 +17,7 @@ class GameView(
         table{
             bottomTableCell ->
             touchpad(0f){ cell ->
-                this.onChangeEvent {  }
+                this.onChangeEvent { model.onTouchChange(knobPercentX,knobPercentY)  }
                 cell.expand()
                     .align(Align.left)
                     .bottom()
