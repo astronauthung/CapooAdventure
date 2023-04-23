@@ -1,0 +1,22 @@
+
+uiskin.png
+size: 256,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+touchBackground
+  rotate: false
+  xy: 11, 1
+  size: 5, 3
+  split: 1, 1, 1, 1
+  orig: 5, 3
+  offset: 0, 0
+  index: -1
+knob
+  rotate: false
+  xy: 57, 29
+  size: 20, 20
+  split: 5, 5, 5, 4
+  orig: 20, 20
+  offset: 0, 0
+  index: -1

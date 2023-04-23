@@ -9,8 +9,10 @@ import com.github.quillraven.fleks.Entity
 import com.github.quillraven.fleks.EntityCreateCfg
 import ktx.box2d.BodyDefinition
 import ktx.box2d.body
+import ktx.math.vec2
 
 class PhysicComponent {
+    val impulse = vec2()
     lateinit var body : Body
 
     companion object {

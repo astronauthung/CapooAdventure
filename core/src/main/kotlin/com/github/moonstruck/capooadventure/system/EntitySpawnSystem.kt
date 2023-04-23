@@ -52,14 +52,18 @@ class EntitySpawnSystem(
 
                 physicsCmpFromImage(phWorld, imageCmp.image, BodyDef.BodyType.DynamicBody) {phCmp, width, height ->
                     box(width, height) {
-                        //cam bien de doc layer nao khong the tuong tac
-                        //may cai cay, cuc da,...
-                        //player kh the va cham vs no
                         isSensor = false
                     }
                 }
+                if (cfg.speedScaling > 0f) {
+                    add<MoveComponent> {
+                        speed = DEFAULT_SPEED * cfg.speedScaling
+                    }
+                }
+                if (name == "Player") {
+                    add<PlayerComponent>()
+                }
             }
-
         }
         world.remove(entity)
     }

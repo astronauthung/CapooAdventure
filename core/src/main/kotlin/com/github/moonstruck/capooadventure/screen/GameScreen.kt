@@ -25,8 +25,8 @@ import ktx.scene2d.actors
 import com.github.moonstruck.capooadventure.CapooAdventure
 import com.github.moonstruck.capooadventure.Ui.View.gameView
 import com.github.moonstruck.capooadventure.Ui.model.GameModel
+import com.github.moonstruck.capooadventure.input.PlayerInputProcessor
 import com.github.moonstruck.capooadventure.input.gdxInputProcessor
-import java.time.Clock.system
 
 class GameScreen(game : CapooAdventure) : KtxScreen {
     private val gameStage = game.gameStage
@@ -56,6 +56,7 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
             add<AnimationSystem>()
             add<RenderSystem>()
             add<DebugSystem>()
+            add<MoveSystem>()
         }
     }
 
@@ -81,6 +82,8 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
 
         currentMap = TmxMapLoader().load("map.tmx")
         gameStage.fire(MapChangeEvent(currentMap!!))
+
+        PlayerInputProcessor(eWorld, eWorld.mapper())
     }
     override fun render(delta: Float) {
         eWorld.update(delta.coerceAtMost(0.25f))
