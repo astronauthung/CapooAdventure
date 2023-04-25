@@ -11,7 +11,7 @@ import ktx.math.component1
 import ktx.math.component2
 
 @AllOf([PhysicComponent::class, ImageComponent::class])
-class PhysicSystem (
+class  PhysicSystem (
     private val phWorld: World,
     private val imageCmps: ComponentMapper<ImageComponent>,
     private val physicCmps: ComponentMapper<PhysicComponent>

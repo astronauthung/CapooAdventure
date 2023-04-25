@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="85">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="94">
  <tileset firstgid="1" source="map.tsx"/>
  <tileset firstgid="122" source="entities.tsx"/>
- <layer id="1" name="ground" width="30" height="20" offsetx="-3.5" offsety="-12">
+ <layer id="1" name="ground" width="30" height="20" offsetx="0" offsety="0.5">
   <data encoding="base64" compression="zlib">
    eJzjYWBg4BnFdMf+VFIz2P0w2Nwz2NxMTfcNdr8NR/dT082D1azh6J6h7FZS3Ueuf2gVDtQyd7DHEwgDALLRINc=
   </data>
  </layer>
  <layer id="2" name="bgd_1" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF1AChQGyBhMXpZK8cAf6ovZQBNigdBcTSUHYFECvR2N6RAtgIKxkFwxiMxv8oGM4AAKFYAuo=
+   eJxjYBgFowA/SAdiCyQsTmXzTXCIyxHg0woMVXs9gVgXiAXobC8pANmNEmhy6HxyAa70BAMqVLKHECDkjlFAHsAXrqNhjh2QWzaMAsoAAPdrBQE=
   </data>
  </layer>
  <layer id="3" name="fgd_1" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYBh8gBWCG+htbzIQZ9PYDhMam08JwBXutI4PXOFOj/gYSEDLtECM2dSKV1LNITVecZlP6/RBDXfKk6CWXIDNnbjin1Q/gczhQcL0BCD7yA0nSvMWNdIWNeKYHH/QKl+Q4x9qhAE5/hksdQcAexYR3A==
+   eJxjYBh8gBWCG+htbzIQZ9Pb0hEA3IE4EoiZ6GxvOBDHA3EqEWqp6cYSIGYB4nIi1JLiRmoCUtw40GAolwfyOMSHsp+oCQjlO1qFE6F8R6twGkr5bhRQDgARlw2E
   </data>
  </layer>
  <objectgroup id="7" name="entities">
   <object id="75" name="Player" gid="124" x="112.591" y="245.273" width="16" height="16"/>
   <object id="76" name="Slime" gid="125" x="77.75" y="215.75" width="32" height="32"/>
-  <object id="77" name="Slime" gid="125" x="182.25" y="247.75" width="32" height="32"/>
+  <object id="77" name="Slime" gid="125" x="170.25" y="223.083" width="32" height="32"/>
   <object id="78" name="Slime" gid="125" x="64.75" y="288.75" width="32" height="32"/>
   <object id="79" name="Slime" gid="125" x="175.5" y="297.5" width="32" height="32"/>
-  <object id="80" name="Slime" gid="125" x="163.5" y="157.5" width="32" height="32"/>
-  <object id="81" name="Slime" gid="125" x="373" y="97.75" width="32" height="32"/>
+  <object id="80" name="Slime" gid="125" x="139.833" y="156.5" width="32" height="32"/>
+  <object id="81" name="Slime" gid="125" x="294.5" y="135.75" width="32" height="32"/>
   <object id="82" name="Slime" gid="125" x="222.5" y="77.25" width="32" height="32"/>
   <object id="83" name="Slime" gid="125" x="276" y="275" width="32" height="32"/>
-  <object id="84" name="Chest" gid="126" x="383" y="66.75" width="16" height="16"/>
+  <object id="93" name="Chest" gid="127" x="301.75" y="100.75" width="20" height="20"/>
  </objectgroup>
 </map>

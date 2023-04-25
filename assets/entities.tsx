@@ -7,7 +7,7 @@
  <tile id="3">
   <image width="32" height="32" source="slime.png"/>
  </tile>
- <tile id="4">
-  <image width="16" height="16" source="chest.png"/>
+ <tile id="5">
+  <image width="20" height="20" source="chest.png"/>
  </tile>
 </tileset>

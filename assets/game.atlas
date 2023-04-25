@@ -4,107 +4,142 @@ size: 512, 64
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
-player/idle
+chest/idle
   rotate: false
   xy: 2, 2
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: 4
+chest/idle
+  rotate: false
+  xy: 24, 2
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: 1
+chest/idle
+  rotate: false
+  xy: 24, 2
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: 0
+chest/idle
+  rotate: false
+  xy: 46, 2
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: 3
+chest/idle
+  rotate: false
+  xy: 68, 2
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: 2
+player/idle
+  rotate: false
+  xy: 2, 24
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 3
 player/idle
   rotate: false
-  xy: 70, 2
+  xy: 70, 24
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 0
 player/idle
   rotate: false
-  xy: 172, 2
+  xy: 172, 24
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 2
 player/idle
   rotate: false
-  xy: 342, 2
+  xy: 342, 24
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 4
 player/idle
   rotate: false
-  xy: 444, 2
+  xy: 444, 24
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
 slime/idle
   rotate: false
-  xy: 104, 2
+  xy: 104, 24
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
 slime/idle
   rotate: false
-  xy: 206, 2
+  xy: 206, 24
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 3
 slime/idle
   rotate: false
-  xy: 274, 2
+  xy: 274, 24
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 0
 slime/idle
   rotate: false
-  xy: 410, 2
+  xy: 410, 24
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 2
 slime/run
   rotate: false
-  xy: 36, 2
+  xy: 36, 24
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 4
 slime/run
   rotate: false
-  xy: 138, 2
+  xy: 138, 24
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
 slime/run
   rotate: false
-  xy: 240, 2
+  xy: 240, 24
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 3
 slime/run
   rotate: false
-  xy: 308, 2
+  xy: 308, 24
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 0
 slime/run
   rotate: false
-  xy: 376, 2
+  xy: 376, 24
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 5
 slime/run
   rotate: false
-  xy: 478, 2
+  xy: 478, 24
   size: 32, 32
   orig: 32, 32
   offset: 0, 0

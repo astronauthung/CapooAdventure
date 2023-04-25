@@ -1,6 +1,6 @@
 name=game
 filename=
-output=test/test_1
+output=../assets
 
 alias=true
 alphaThreshold=0

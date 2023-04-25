@@ -53,7 +53,13 @@ class EntitySpawnSystem(
                     val h = height*cfg.physicScaling.y
 
                     box(w,h,cfg.physicOffset) {
-                        isSensor = false
+                        isSensor = cfg.bodyType != BodyDef.BodyType.StaticBody
+                    }
+                    if (cfg.bodyType != BodyDef.BodyType.StaticBody) {
+                        val collH = h * 0.4f
+                        val collOffset = vec2().apply { set(cfg.physicOffset) }
+                        collOffset.y -= h * 0.5f - collH * 0.5f
+                        box (w, collH, collOffset)
                     }
                 }
                 if (cfg.speedScaling > 0f) {
@@ -76,7 +82,7 @@ class EntitySpawnSystem(
             "Slime" -> SpawnCfg(AnimationActor.SLIME,
                 physicScaling =  vec2(0.3f,0.3f),
                 physicOffset = vec2(0f,-2f* UNIT_SCALE))
-            "Chest" -> SpawnCfg(AnimationActor.SLIME,
+            "Chest" -> SpawnCfg(AnimationActor.CHEST,
                 bodyType = BodyDef.BodyType.StaticBody,
             )
             else -> gdxError("Type $name has no SpawnCfg setup")

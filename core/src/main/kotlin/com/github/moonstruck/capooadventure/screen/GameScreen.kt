@@ -54,6 +54,7 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
 
         systems {
             add<EntitySpawnSystem>()
+            add<CollisionSpawnSystem>()
             add<MoveSystem>()
             add<PhysicSystem>()
             add<AnimationSystem>()
