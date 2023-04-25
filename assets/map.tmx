@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="84">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="85">
  <tileset firstgid="1" source="map.tsx"/>
  <tileset firstgid="122" source="entities.tsx"/>
- <layer id="1" name="ground" width="30" height="20">
+ <layer id="1" name="ground" width="30" height="20" offsetx="-3.5" offsety="-12">
   <data encoding="base64" compression="zlib">
    eJzjYWBg4BnFdMf+VFIz2P0w2Nwz2NxMTfcNdr8NR/dT082D1azh6J6h7FZS3Ueuf2gVDtQyd7DHEwgDALLRINc=
   </data>
@@ -27,5 +27,6 @@
   <object id="81" name="Slime" gid="125" x="373" y="97.75" width="32" height="32"/>
   <object id="82" name="Slime" gid="125" x="222.5" y="77.25" width="32" height="32"/>
   <object id="83" name="Slime" gid="125" x="276" y="275" width="32" height="32"/>
+  <object id="84" name="Chest" gid="126" x="383" y="66.75" width="16" height="16"/>
  </objectgroup>
 </map>

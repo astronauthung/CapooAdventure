@@ -1,6 +1,7 @@
 package com.github.moonstruck.capooadventure.system
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
+import com.badlogic.gdx.graphics.g3d.model.Animation
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.physics.box2d.BodyDef
 import com.badlogic.gdx.physics.box2d.World
@@ -12,10 +13,7 @@ import com.github.moonstruck.capooadventure.CapooAdventure.Companion.UNIT_SCALE
 import com.github.moonstruck.capooadventure.component.*
 import com.github.moonstruck.capooadventure.component.PhysicComponent.Companion.physicsCmpFromImage
 import com.github.moonstruck.capooadventure.event.MapChangeEvent
-import com.github.quillraven.fleks.AllOf
-import com.github.quillraven.fleks.ComponentMapper
-import com.github.quillraven.fleks.Entity
-import com.github.quillraven.fleks.IteratingSystem
+import com.github.quillraven.fleks.*
 import ktx.app.gdxError
 import ktx.box2d.box
 import ktx.math.vec2
@@ -50,8 +48,11 @@ class EntitySpawnSystem(
                     nextAnimation(cfg.model, AnimationType.IDLE)
                 }
 
-                physicsCmpFromImage(phWorld, imageCmp.image, BodyDef.BodyType.DynamicBody) {phCmp, width, height ->
-                    box(width, height) {
+                physicsCmpFromImage(phWorld, imageCmp.image, cfg.bodyType) {phCmp, width, height ->
+                    val w = width*cfg.physicScaling.x
+                    val h = height*cfg.physicScaling.y
+
+                    box(w,h,cfg.physicOffset) {
                         isSensor = false
                     }
                 }
@@ -69,8 +70,15 @@ class EntitySpawnSystem(
     }
     private fun spawnCfg(name:String): SpawnCfg = cachedCfgs.getOrPut(name) {
         when (name){
-            "Player" -> SpawnCfg(AnimationActor.PLAYER)
-            "Slime" -> SpawnCfg(AnimationActor.SLIME)
+            "Player" -> SpawnCfg(AnimationActor.PLAYER,
+                physicScaling =  vec2(0.3f,0.3f),
+                physicOffset = vec2(0f,-10f* UNIT_SCALE))
+            "Slime" -> SpawnCfg(AnimationActor.SLIME,
+                physicScaling =  vec2(0.3f,0.3f),
+                physicOffset = vec2(0f,-2f* UNIT_SCALE))
+            "Chest" -> SpawnCfg(AnimationActor.SLIME,
+                bodyType = BodyDef.BodyType.StaticBody,
+            )
             else -> gdxError("Type $name has no SpawnCfg setup")
         }
     }

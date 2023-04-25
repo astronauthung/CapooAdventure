@@ -1,9 +1,10 @@
 package com.github.moonstruck.capooadventure.system
 
 import com.badlogic.gdx.math.MathUtils
+import com.badlogic.gdx.physics.box2d.*
+import com.badlogic.gdx.physics.box2d.World
 import com.github.moonstruck.capooadventure.component.ImageComponent
 import com.github.moonstruck.capooadventure.component.PhysicComponent
-import com.badlogic.gdx.physics.box2d.World
 import com.github.quillraven.fleks.*
 import ktx.log.logger
 import ktx.math.component1
@@ -15,7 +16,11 @@ class PhysicSystem (
     private val imageCmps: ComponentMapper<ImageComponent>,
     private val physicCmps: ComponentMapper<PhysicComponent>
     //1/60 -> run 60 frames/s
-) : IteratingSystem(interval = Fixed(1 / 60f)) {
+) : ContactListener, IteratingSystem(interval = Fixed(1 / 60f)) {
+
+    init {
+        phWorld.setContactListener(this)
+    }
 
     override fun onUpdate() {
         if (phWorld.autoClearForces) {
@@ -57,5 +62,21 @@ class PhysicSystem (
     companion object {
         private val log = logger<PhysicSystem>()
     }
+
+    override fun beginContact(contact: Contact?) {
+    }
+
+    override fun endContact(contact: Contact?) {
+    }
+
+    private fun Fixture.isStaticBody()= this.body.type == BodyDef.BodyType.StaticBody
+    private fun Fixture.isDynamicBody() = this.body.type == BodyDef.BodyType.DynamicBody
+
+    override fun preSolve(contact: Contact, oldManifold: Manifold) {
+        contact.isEnabled = (contact.fixtureA.isStaticBody() && contact.fixtureB.isDynamicBody()) ||
+                            (contact.fixtureB.isStaticBody()&& contact.fixtureA.isDynamicBody())
+    }
+
+    override fun postSolve(contact: Contact?, impulse: ContactImpulse?) = Unit
 }
 

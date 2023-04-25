@@ -1,30 +1,45 @@
 package com.github.moonstruck.capooadventure.system
 
+import com.badlogic.gdx.scenes.scene2d.Event
+import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.github.moonstruck.capooadventure.component.ImageComponent
 import com.github.moonstruck.capooadventure.component.PhysicComponent
 import com.github.moonstruck.capooadventure.component.PlayerComponent
-import com.github.quillraven.fleks.AllOf
-import com.github.quillraven.fleks.ComponentMapper
-import com.github.quillraven.fleks.Entity
-import com.github.quillraven.fleks.IteratingSystem
+import com.github.moonstruck.capooadventure.event.MapChangeEvent
+import com.github.quillraven.fleks.*
+import ktx.tiled.height
+import ktx.tiled.width
 
 
 @AllOf([PlayerComponent::class, ImageComponent::class])
 class CameraSystem (
     private val imageCmps: ComponentMapper<ImageComponent>,
-    private val physicCmps: ComponentMapper<PhysicComponent>,
-    stage: Stage,
-) : IteratingSystem(){
+    @Qualifier("GameStage") stage: Stage,
+) : EventListener,IteratingSystem(){
     private val camera = stage.camera
+    private var maxW = 0f
+    private var maxH = 0f
+
 
     override fun onTickEntity(entity: Entity) {
-        with(physicCmps[entity]) {
+        with(imageCmps[entity]) {
+            val viewW = camera.viewportWidth*0.5f
+            val viewH = camera.viewportHeight*0.5f
             camera.position.set(
-                body.position.x,
-                body.position.y,
+                image.x.coerceIn(viewW,maxW-viewW),
+                image.y.coerceIn(viewH,maxH-viewH),
                 camera.position.z
             )
         }
+    }
+
+    override fun handle(event: Event?): Boolean {
+        if(event is MapChangeEvent){
+            maxW = event.map.width.toFloat()
+            maxH = event.map.height.toFloat()
+            return true
+        }
+        return false
     }
 }
