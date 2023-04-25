@@ -18,17 +18,10 @@ class PlayerInputProcessor(
     private val moveCmps: ComponentMapper<MoveComponent>,
 
 ): KtxInputAdapter {
-    private var playerSin = 0f
-    private var playerCos = 0f
     private val playerEntities = world.family(allOf = arrayOf(PlayerComponent::class))
     init {
         Gdx.input.inputProcessor = this
     }
-
-    private fun Int.isMovementkey(): Boolean {
-        return this == UP || this == DOWN || this == RIGHT || this == LEFT
-    }
-
 
     fun touchpadMove(x:Float,y:Float){
         val angle = MathUtils.atan2(y,x)
@@ -45,33 +38,6 @@ class PlayerInputProcessor(
                 sin = playerSin
             }
         }
-    }
-
-    override fun keyDown(keycode: Int): Boolean {
-        if(keycode.isMovementkey()) {
-            when (keycode) {
-                UP -> playerSin = 1f
-                DOWN -> playerSin = -1f
-                RIGHT -> playerCos = 1f
-                LEFT -> playerCos = -1f
-            }
-            updatePlayerMovement(playerSin,playerCos)
-            return true
-        }
-        return false
-    }
-    override fun keyUp(keycode: Int): Boolean {
-        if(keycode.isMovementkey()) {
-            when (keycode) {
-                UP -> playerSin = if (Gdx.input.isKeyPressed(DOWN)) -1f else 0f
-                DOWN -> playerSin = if (Gdx.input.isKeyPressed(DOWN)) 1f else 0f
-                RIGHT -> playerCos = if (Gdx.input.isKeyPressed(DOWN)) -1f else 0f
-                LEFT -> playerCos = if (Gdx.input.isKeyPressed(DOWN)) 1f else 0f
-            }
-            updatePlayerMovement(playerSin, playerCos)
-            return true
-        }
-        return false
     }
 }
 

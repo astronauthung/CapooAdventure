@@ -57,6 +57,7 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
             add<MoveSystem>()
             add<PhysicSystem>()
             add<AnimationSystem>()
+            add<CameraSystem>()
             add<RenderSystem>()
             add<DebugSystem>()
         }
@@ -80,9 +81,6 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
 
         currentMap = TmxMapLoader().load("map.tmx")
         gameStage.fire(MapChangeEvent(currentMap!!))
-
-
-        PlayerInputProcessor(eWorld, eWorld.mapper())
 
         uiStage.actors {
             gameView(GameModel(eWorld,gameStage, PlayerInputProcessor(eWorld,eWorld.mapper())))
