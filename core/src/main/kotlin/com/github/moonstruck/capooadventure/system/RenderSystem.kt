@@ -62,7 +62,7 @@ class RenderSystem(
             draw()
         }
 
-        }
+    }
 
     override fun onTickEntity(entity: Entity) {
         imageCmps[entity].image.toFront()
@@ -83,7 +83,7 @@ class RenderSystem(
                 }
             }
             return true
-        }
+            }
         }
         return false
     }

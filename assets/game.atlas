@@ -10,35 +10,7 @@ chest/idle
   size: 20, 20
   orig: 20, 20
   offset: 0, 0
-  index: 4
-chest/idle
-  rotate: false
-  xy: 24, 2
-  size: 20, 20
-  orig: 20, 20
-  offset: 0, 0
-  index: 1
-chest/idle
-  rotate: false
-  xy: 24, 2
-  size: 20, 20
-  orig: 20, 20
-  offset: 0, 0
   index: 0
-chest/idle
-  rotate: false
-  xy: 46, 2
-  size: 20, 20
-  orig: 20, 20
-  offset: 0, 0
-  index: 3
-chest/idle
-  rotate: false
-  xy: 68, 2
-  size: 20, 20
-  orig: 20, 20
-  offset: 0, 0
-  index: 2
 player/idle
   rotate: false
   xy: 2, 24

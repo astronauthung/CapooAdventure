@@ -4,17 +4,17 @@
  <tileset firstgid="122" source="entities.tsx"/>
  <layer id="1" name="ground" width="30" height="20" offsetx="0" offsety="0.5">
   <data encoding="base64" compression="zlib">
-   eJzjYWBg4BnFdMf+VFIz2P0w2Nwz2NxMTfcNdr8NR/dT082D1azh6J6h7FZS3Ueuf2gVDtQyd7DHEwgDALLRINc=
+   eJzjYWBg4BnFdMf+VFIz2P0w2Nwz2NxMTfcNdr8NR0zNMB+sZg1H9wxlt5LqPnL9Q6twoJa5gz2eQBgAb0YglA==
   </data>
  </layer>
  <layer id="2" name="bgd_1" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFowA/SAdiCyQsTmXzTXCIyxHg0woMVXs9gVgXiAXobC8pANmNEmhy6HxyAa70BAMqVLKHECDkjlFAHsAXrqNhjh2QWzaMAsoAAPdrBQE=
+   eJxjYBgFowA/SAdiCyQsTmXzTXCIyxHg0woMVXs9gVgXiAXobC8pANmNEmhy6HxyAa70BAMqVLKHECDkjlFAHsAXrqNhPgoGEwAAM88Eew==
   </data>
  </layer>
  <layer id="3" name="fgd_1" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYBh8gBWCG+htbzIQZ9Pb0hEA3IE4EoiZ6GxvOBDHA3EqEWqp6cYSIGYB4nIi1JLiRmoCUtw40GAolwfyOMSHsp+oCQjlO1qFE6F8R6twGkr5bhRQDgARlw2E
+   eJxjYBh8gBWCG+htbzIQZ9Pb0hEA3IE4EoiZ6GxvOBDHA3EqEWqp6cYSIGYB4nIi1JLiRmoCUtw40GAolwfyOMSHsp/oCUbDaRQMZQAA0UYK2A==
   </data>
  </layer>
  <objectgroup id="7" name="entities">

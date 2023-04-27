@@ -70,6 +70,9 @@ class EntitySpawnSystem(
                 if (name == "Player") {
                     add<PlayerComponent>()
                 }
+                if (cfg.bodyType != BodyDef.BodyType.StaticBody) {
+                    add<CollisionComponent>()
+                }
             }
         }
         world.remove(entity)
