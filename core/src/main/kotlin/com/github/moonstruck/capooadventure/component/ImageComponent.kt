@@ -2,12 +2,13 @@ package com.github.moonstruck.capooadventure.component
 
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.Image
+import com.github.moonstruck.capooadventure.actor.FlipImage
 import com.github.quillraven.fleks.Entity
 import com.github.quillraven.fleks.ComponentListener
 import com.github.quillraven.fleks.Qualifier
 
 class ImageComponent: Comparable<ImageComponent> {
-    lateinit var image: Image
+    lateinit var image: FlipImage
     var layer = 0
     override fun compareTo(other: ImageComponent): Int {
         val layerDiff = layer.compareTo(other.layer)

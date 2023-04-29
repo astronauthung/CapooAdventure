@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.badlogic.gdx.utils.Scaling
 import com.github.moonstruck.capooadventure.CapooAdventure.Companion.UNIT_SCALE
+import com.github.moonstruck.capooadventure.actor.FlipImage
 import com.github.moonstruck.capooadventure.component.*
 import com.github.moonstruck.capooadventure.component.PhysicComponent.Companion.physicsCmpFromImage
 import com.github.moonstruck.capooadventure.event.MapChangeEvent
@@ -38,7 +39,7 @@ class EntitySpawnSystem(
 
             world.entity {
                 val imageCmp = add<ImageComponent> {
-                    image = Image().apply {
+                    image = FlipImage().apply {
                         setPosition(location.x, location.y)
                         setSize(relativeSize.x, relativeSize.y)
                         setScaling(Scaling.fill)
