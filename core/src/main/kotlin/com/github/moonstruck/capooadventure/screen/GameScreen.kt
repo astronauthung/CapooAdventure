@@ -57,6 +57,9 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
             add<CollisionSpawnSystem>()
             add<CollisionDespawnSystem>()
             add<MoveSystem>()
+            add<AttackSystem>()
+            add<DeadSystem>()
+            add<LifeSystem>()
             add<PhysicSystem>()
             add<AnimationSystem>()
             add<CameraSystem>()
@@ -85,7 +88,7 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
         gameStage.fire(MapChangeEvent(currentMap!!))
 
         uiStage.actors {
-            gameView(GameModel(eWorld,gameStage, PlayerInputProcessor(eWorld,eWorld.mapper())))
+            gameView(GameModel(eWorld,gameStage, PlayerInputProcessor(eWorld)))
         }
         gdxInputProcessor(uiStage)
 

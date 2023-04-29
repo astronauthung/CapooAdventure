@@ -66,8 +66,6 @@ class  PhysicSystem (
     companion object {
         private val log = logger<PhysicSystem>()
     }
-    private val Fixture.entity: Entity
-    get() = this.body.userData as Entity
 
     override fun beginContact(contact: Contact) {
         val entityA: Entity = contact.fixtureA.entity
