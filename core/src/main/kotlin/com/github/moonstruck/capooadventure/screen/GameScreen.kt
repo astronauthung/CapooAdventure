@@ -25,6 +25,7 @@ import ktx.scene2d.actors
 import com.github.moonstruck.capooadventure.CapooAdventure
 import com.github.moonstruck.capooadventure.Ui.View.gameView
 import com.github.moonstruck.capooadventure.Ui.model.GameModel
+import com.github.moonstruck.capooadventure.component.FloatingTextComponent
 import com.github.moonstruck.capooadventure.component.MoveComponent
 import com.github.moonstruck.capooadventure.input.PlayerInputProcessor
 import com.github.moonstruck.capooadventure.input.gdxInputProcessor
@@ -50,6 +51,7 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
         components {
             add<ImageComponent.Companion.ImageComponentListener>()
             add<PhysicComponent.Companion.PhysicComponentListener>()
+            add<FloatingTextComponent.Companion.FloatingTextComponentListener>()
         }
 
         systems {
@@ -63,6 +65,7 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
             add<PhysicSystem>()
             add<AnimationSystem>()
             add<CameraSystem>()
+            add<FloatingTextSystem>()
             add<RenderSystem>()
             add<DebugSystem>()
         }
