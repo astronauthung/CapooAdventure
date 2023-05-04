@@ -4,6 +4,13 @@ size: 512, 64
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
+chest/open
+  rotate: false
+  xy: 2, 2
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: 1
 chest/idle
   rotate: false
   xy: 2, 2
@@ -11,6 +18,27 @@ chest/idle
   orig: 20, 20
   offset: 0, 0
   index: 0
+chest/open
+  rotate: false
+  xy: 24, 2
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: 3
+chest/open
+  rotate: false
+  xy: 46, 2
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: 2
+chest/open
+  rotate: false
+  xy: 68, 2
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: 4
 player/idle
   rotate: false
   xy: 2, 24
