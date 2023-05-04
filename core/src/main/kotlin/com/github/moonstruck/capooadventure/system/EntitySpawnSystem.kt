@@ -89,6 +89,10 @@ class EntitySpawnSystem(
                 if (name == "Player") {
                     add<PlayerComponent>()
                 }
+
+                if(cfg.lootable){
+                    add<LootComponent>()
+                }
                 if (cfg.bodyType != BodyDef.BodyType.StaticBody) {
                     add<CollisionComponent>()
                 }
@@ -111,6 +115,7 @@ class EntitySpawnSystem(
                 bodyType = BodyDef.BodyType.StaticBody,
                 canAttack = false,
                 lifeScaling = 0f,
+                lootable = true
             )
             else -> gdxError("Type $name has no SpawnCfg setup")
         }

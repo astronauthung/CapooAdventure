@@ -20,6 +20,8 @@ class AttackSystem(
     private val physicCmps : ComponentMapper<PhysicComponent>,
     private val imageCmps : ComponentMapper<ImageComponent>,
     private val lifeCmps : ComponentMapper<LifeComponent>,
+    private val playerCmps : ComponentMapper<PlayerComponent>,
+    private val lootCmps : ComponentMapper<LootComponent>,
     private val phWorld : com.badlogic.gdx.physics.box2d.World,
 ) :IteratingSystem(){
     override fun onTickEntity(entity: Entity) {
@@ -69,23 +71,31 @@ class AttackSystem(
                 )
             }
 
-            phWorld.query(AABB_RECT.x, AABB_RECT.y, AABB_RECT.width, AABB_RECT.height){fixture ->
-                if(fixture.userData != HIT_BOX_SENSOR){
+            phWorld.query(AABB_RECT.x, AABB_RECT.y, AABB_RECT.width, AABB_RECT.height) { fixture ->
+                if (fixture.userData != HIT_BOX_SENSOR) {
                     return@query true
                 }
                 val fixtureEntity = fixture.entity
-                if(fixtureEntity == entity){
+                if (fixtureEntity == entity) {
                     //Prevent attack ourself
                     return@query true
                 }
 
-                configureEntity(fixtureEntity){
+                configureEntity(fixtureEntity) {
                     lifeCmps.getOrNull(it)?.let { lifeCmp ->
-                        lifeCmp.takeDamage += attackCmp.damage * MathUtils.random(0.9f,1.2f) }
+                        lifeCmp.takeDamage += attackCmp.damage * MathUtils.random(0.9f, 1.2f)
+                    }
+
+
+                    if (entity in playerCmps) {
+                        lootCmps.getOrNull(it)?.let { lootCmp ->
+                            lootCmp.interactEntity = entity
+                        }
+                    }
+                }
+                    return@query true
                 }
 
-                return@query true
-            }
             attackCmp.state = AttackState.READY
         }
     }
