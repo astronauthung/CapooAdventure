@@ -26,11 +26,7 @@ class PlayerInputProcessor(
     }
 
     fun touchpadMove(x:Float,y:Float){
-        val angle = MathUtils.atan2(y,x)
-        val cos = MathUtils.cos(angle)
-        val sin = MathUtils.sin(angle)
-
-        updatePlayerMovement(sin,cos)
+        updatePlayerMovement(y,x)
     }
 
     private fun updatePlayerMovement(playerSin: Float, playerCos: Float) {

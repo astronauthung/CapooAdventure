@@ -23,8 +23,7 @@ class MoveSystem (
         val mass = physicCmp.body.mass
         val(velX, velY) = physicCmp.body.linearVelocity
 
-        println(moveCmp.cos.toString())
-        println(moveCmp.sin.toString())
+
 
         if (moveCmp.cos == 0f && moveCmp.sin == 0f) {
             //no direction specified -> stop entity immediately
