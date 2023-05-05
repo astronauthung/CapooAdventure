@@ -88,6 +88,7 @@ class EntitySpawnSystem(
 
                 if (name == "Player") {
                     add<PlayerComponent>()
+                    add<StateComponent>()
                 }
 
                 if(cfg.lootable){

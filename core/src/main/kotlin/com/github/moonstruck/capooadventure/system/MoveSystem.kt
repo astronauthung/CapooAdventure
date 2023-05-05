@@ -25,7 +25,7 @@ class MoveSystem (
 
 
 
-        if (moveCmp.cos == 0f && moveCmp.sin == 0f) {
+        if ((moveCmp.cos == 0f && moveCmp.sin == 0f) || moveCmp.root) {
             //no direction specified -> stop entity immediately
             physicCmp.impulse.set (
                 mass * (0f - velX),

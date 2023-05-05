@@ -9,8 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.github.moonstruck.capooadventure.Ui.View.GameView
 import com.github.moonstruck.capooadventure.Ui.disposeSkin
 import com.github.moonstruck.capooadventure.Ui.loadSkin
-import com.github.moonstruck.capooadventure.component.ImageComponent
-import com.github.moonstruck.capooadventure.component.PhysicComponent
 import com.github.moonstruck.capooadventure.event.MapChangeEvent
 import com.github.moonstruck.capooadventure.event.fire
 import com.github.moonstruck.capooadventure.system.*
@@ -25,8 +23,8 @@ import ktx.scene2d.actors
 import com.github.moonstruck.capooadventure.CapooAdventure
 import com.github.moonstruck.capooadventure.Ui.View.gameView
 import com.github.moonstruck.capooadventure.Ui.model.GameModel
-import com.github.moonstruck.capooadventure.component.FloatingTextComponent
-import com.github.moonstruck.capooadventure.component.MoveComponent
+import com.github.moonstruck.capooadventure.component.*
+import com.github.moonstruck.capooadventure.component.FloatingTextComponent.*
 import com.github.moonstruck.capooadventure.input.PlayerInputProcessor
 import com.github.moonstruck.capooadventure.input.gdxInputProcessor
 import com.github.quillraven.fleks.ComponentMapper
@@ -52,6 +50,7 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
             add<ImageComponent.Companion.ImageComponentListener>()
             add<PhysicComponent.Companion.PhysicComponentListener>()
             add<FloatingTextComponent.Companion.FloatingTextComponentListener>()
+            add<StateComponent.Companion.StateComponentListener>()
         }
 
         systems {
@@ -65,6 +64,7 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
             add<LifeSystem>()
             add<PhysicSystem>()
             add<AnimationSystem>()
+            add<StateSystem>()
             add<CameraSystem>()
             add<FloatingTextSystem>()
             add<RenderSystem>()

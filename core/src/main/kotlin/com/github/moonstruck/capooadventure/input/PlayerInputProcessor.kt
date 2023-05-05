@@ -43,7 +43,6 @@ class PlayerInputProcessor(
             playerEntities.forEach {
                 with(attackCmps[it]){
                     doAttack = true
-                    startAttack()
                 }
             }
         }

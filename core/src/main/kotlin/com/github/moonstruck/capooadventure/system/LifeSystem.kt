@@ -2,6 +2,7 @@ package com.github.moonstruck.capooadventure.system
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
+import com.badlogic.gdx.graphics.g2d.Animation
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.scenes.scene2d.ui.Label
@@ -17,6 +18,7 @@ class LifeSystem(
     private val deadCmps : ComponentMapper<DeadComponent>,
     private val playerCmps : ComponentMapper<PlayerComponent>,
     private val physicCmps : ComponentMapper<PhysicComponent>,
+    private val animationCmps : ComponentMapper<AnimationComponent>,
 ) : IteratingSystem(){
     private val damageFont =  BitmapFont(Gdx.files.internal("damage.fnt"))
 
@@ -35,6 +37,11 @@ class LifeSystem(
 
         if(lifeCmp.isDead)
         {
+            animationCmps.getOrNull(entity)?.let{animationCmp ->
+                animationCmp.nextAnimation(AnimationType.DEATH)
+                animationCmp.playMode= Animation.PlayMode.NORMAL
+            }
+
             configureEntity(entity){
                 deadCmps.add(it){
                     if(it in playerCmps){

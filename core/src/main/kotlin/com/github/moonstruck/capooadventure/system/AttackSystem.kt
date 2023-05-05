@@ -22,6 +22,7 @@ class AttackSystem(
     private val lifeCmps : ComponentMapper<LifeComponent>,
     private val playerCmps : ComponentMapper<PlayerComponent>,
     private val lootCmps : ComponentMapper<LootComponent>,
+    private val animationCmps : ComponentMapper<AnimationComponent>,
     private val phWorld : com.badlogic.gdx.physics.box2d.World,
 ) :IteratingSystem(){
     override fun onTickEntity(entity: Entity) {
@@ -95,7 +96,9 @@ class AttackSystem(
                 }
                     return@query true
                 }
-
+        }
+        val isDone = animationCmps.getOrNull(entity)?.isAnimationDone ?:true
+        if(isDone){
             attackCmp.state = AttackState.READY
         }
     }

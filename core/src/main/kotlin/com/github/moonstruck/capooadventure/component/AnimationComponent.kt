@@ -24,6 +24,9 @@ class AnimationComponent(
 ) {
     lateinit var animation: Animation<TextureRegionDrawable>
     var nextAnimation:String = ""
+
+    val isAnimationDone : Boolean
+    get() = animation.isAnimationFinished(stateTime)
     fun nextAnimation(actor: AnimationActor, type: AnimationType){
         this.actor = actor
         nextAnimation = "${actor.atlasKey}/${type.atlasKey}"
