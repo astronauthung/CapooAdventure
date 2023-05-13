@@ -86,7 +86,7 @@
  <tile id="24"/>
  <tile id="35">
   <objectgroup draworder="index" id="2">
-   <object id="1" x="1" y="0" width="14" height="12.087"/>
+   <object id="1" x="1" y="0" width="14" height="12.011"/>
   </objectgroup>
  </tile>
  <tile id="51">
