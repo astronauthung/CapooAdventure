@@ -17,6 +17,7 @@ import com.github.moonstruck.capooadventure.event.MapChangeEvent
 import com.github.quillraven.fleks.*
 import ktx.app.gdxError
 import ktx.box2d.box
+import ktx.box2d.circle
 import ktx.math.vec2
 import ktx.tiled.layer
 import ktx.tiled.x
@@ -50,7 +51,7 @@ class EntitySpawnSystem(
                     nextAnimation(cfg.model, AnimationType.IDLE)
                 }
 
-                physicsCmpFromImage(phWorld, imageCmp.image, cfg.bodyType) {phCmp, width, height ->
+                val physicCmp = physicsCmpFromImage(phWorld, imageCmp.image, cfg.bodyType) {phCmp, width, height ->
                     val w = width*cfg.physicScaling.x
                     val h = height*cfg.physicScaling.y
                     phCmp.offset.set(cfg.physicOffset)
@@ -97,6 +98,16 @@ class EntitySpawnSystem(
                 if (cfg.bodyType != BodyDef.BodyType.StaticBody) {
                     add<CollisionComponent>()
                 }
+
+                if(cfg.aiTreePath.isNotBlank()){
+                    add<AiComponent>{
+                        treePath = cfg.aiTreePath
+                    }
+                    physicCmp.body.circle(4f){
+                        isSensor = true
+                        userData = AI_SENSOR
+                    }
+                }
             }
         }
         world.remove(entity)
@@ -111,7 +122,9 @@ class EntitySpawnSystem(
             "Slime" -> SpawnCfg(AnimationActor.SLIME,
                 lifeScaling = 0.75f,
                 physicScaling =  vec2(0.3f,0.3f),
-                physicOffset = vec2(0f,-2f* UNIT_SCALE))
+                physicOffset = vec2(0f,-2f* UNIT_SCALE),
+                aiTreePath = "ai/slime.tree"
+            )
             "Chest" -> SpawnCfg(AnimationActor.CHEST,
                 bodyType = BodyDef.BodyType.StaticBody,
                 canAttack = false,
@@ -151,5 +164,6 @@ class EntitySpawnSystem(
 
     companion object {
         const val HIT_BOX_SENSOR = "Hitbox"
+        const val AI_SENSOR = "AiSensor"
     }
 }

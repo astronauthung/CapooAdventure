@@ -17,6 +17,7 @@ data class SpawnCfg (
     val attackExtraAttackRange : Float = 0f,
     val lifeScaling : Float = 1f,
     val lootable : Boolean = false,
+    val aiTreePath : String = "",
     val physicScaling : Vector2 = vec2(1f,1f),
     val physicOffset : Vector2 = vec2(0f,0f),
     val bodyType: BodyType = BodyType.DynamicBody,
