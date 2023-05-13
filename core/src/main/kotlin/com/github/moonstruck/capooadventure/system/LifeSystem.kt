@@ -38,7 +38,7 @@ class LifeSystem(
         if(lifeCmp.isDead)
         {
             animationCmps.getOrNull(entity)?.let{animationCmp ->
-                animationCmp.nextAnimation(AnimationType.DEATH)
+                animationCmp.nextAnimation(AnimationType.DEAD)
                 animationCmp.playMode= Animation.PlayMode.NORMAL
             }
 

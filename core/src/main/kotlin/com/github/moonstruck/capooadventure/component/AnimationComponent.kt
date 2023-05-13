@@ -11,7 +11,7 @@ enum class AnimationActor{
 }
 
 enum class AnimationType{
-    IDLE,RUN,ATTACK,DEATH,OPEN;
+    IDLE,RUN,ATTACK,DEAD,OPEN;
 
     val atlasKey:String = this.toString().lowercase()
 }

@@ -58,7 +58,7 @@ enum class DefaultState : EntityState {
     RESURRECT{
         override fun enter(entity: AiEntity) {
             entity.enableGlobalState(true)
-            entity.animation(AnimationType.DEATH,Animation.PlayMode.REVERSED)
+            entity.animation(AnimationType.DEAD,Animation.PlayMode.REVERSED)
         }
 
         override fun update(entity: AiEntity) {
