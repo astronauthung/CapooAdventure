@@ -129,8 +129,13 @@ class EntitySpawnSystem(
                 bodyType = BodyDef.BodyType.StaticBody,
                 canAttack = false,
                 lifeScaling = 0f,
-                lootable = true
-            )
+                lootable = true)
+            "Chicken" -> SpawnCfg(AnimationActor.CHICKEN,
+                canAttack = false,
+                lifeScaling = 0.75f,
+                physicScaling =  vec2(0.3f,0.3f),
+                physicOffset = vec2(0f,-2f* UNIT_SCALE))
+
             else -> gdxError("Type $name has no SpawnCfg setup")
         }
     }
