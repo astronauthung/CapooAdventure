@@ -68,6 +68,7 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
             add<CameraSystem>()
             add<FloatingTextSystem>()
             add<RenderSystem>()
+            add<AudioSystem>()
             add<DebugSystem>()
         }
     }

@@ -8,7 +8,11 @@ import com.github.quillraven.fleks.*
 import ktx.box2d.query
 import ktx.math.component1
 import ktx.math.component2
-import java.awt.Rectangle
+import com.badlogic.gdx.physics.box2d.World
+import com.badlogic.gdx.scenes.scene2d.Stage
+import com.github.moonstruck.capooadventure.event.EntityAttackEvent
+import com.github.moonstruck.capooadventure.event.fire
+import com.badlogic.gdx.math.Rectangle
 
 val Fixture.entity: Entity
     get() = this.body.userData as Entity
@@ -23,7 +27,8 @@ class AttackSystem(
     private val playerCmps : ComponentMapper<PlayerComponent>,
     private val lootCmps : ComponentMapper<LootComponent>,
     private val animationCmps : ComponentMapper<AnimationComponent>,
-    private val phWorld : com.badlogic.gdx.physics.box2d.World,
+    private val phWorld : World,
+    @Qualifier("GameStage") private val stage: Stage,
 ) :IteratingSystem(){
     override fun onTickEntity(entity: Entity) {
         val attackCmp = attackCmps[entity]
@@ -46,6 +51,10 @@ class AttackSystem(
         if(attackCmp.delay <= 0f && attackCmp.isAttacking){
             //deal damage to enemy
             attackCmp.state = AttackState.DEAL_DAMAGE
+
+            animationCmps.getOrNull(entity)?.let { aniCmp ->
+                stage.fire(EntityAttackEvent(aniCmp.actor.atlasKey))
+            }
 
             val image = imageCmps[entity].image
             val physicCmp = physicCmps[entity]
@@ -103,6 +112,6 @@ class AttackSystem(
         }
     }
     companion object{
-        val AABB_RECT = com.badlogic.gdx.math.Rectangle()
+        val AABB_RECT = Rectangle()
     }
 }

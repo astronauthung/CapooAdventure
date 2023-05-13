@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="94">
+ <tileset firstgid="1" source="map.tsx"/>
+ <tileset firstgid="122" source="entities.tsx"/>
+ <layer id="1" name="ground" width="30" height="20" offsetx="0" offsety="0.5">
+  <data encoding="base64" compression="zlib">
+   eJzjYWBg4BnFdMf+VFIz2P0w2Nwz2NxMTfcNdr8NJqwPxPlAnEvn+MJnLzXjD2RWDA38iwvr4cAaNLY3nwAmx15C8ZAGxHYEsBWN/EtOOiE3XdGqPCHW3BgqmTOQGAD10Srj
+  </data>
+ </layer>
+ <layer id="2" name="bgd_1" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgawGSgHTCCQToQWyBhcSqbjytu5QjwaQWGqr2eQKwLxAJQPrF5hp7+RXajBBAbAbEeEGtC+fQAKjQyNw+NP1LKLCM62wcLV30620sKQM+L1AZlQCxEI7MHI3AcaAeQCQA3jgci
+  </data>
+ </layer>
+ <layer id="3" name="fgd_1" width="30" height="20">
+  <properties>
+   <property name="music" value="D:/Tai Lieu Hoc Phan/DACS3/Code/CapooAdventure/assets/fields.ogg"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBh8gBWCG+htbzIQZ9Pb0hEA3IE4EoiZ6GxvOBDHA3EqEWqp6cYSIGYB4nIi1JLiRmoCUtxIS2BChJqhXB7I4xAnxt+0APTMi8h+JDedUxr35KZzfHEvCaUHKg5HASowBOIMIPYeaIdgAQBKaw35
+  </data>
+ </layer>
+ <objectgroup id="7" name="entities">
+  <object id="75" name="Player" gid="124" x="112.591" y="245.273" width="16" height="16"/>
+  <object id="76" name="Slime" gid="125" x="77.75" y="215.75" width="32" height="32"/>
+  <object id="77" name="Slime" gid="125" x="170.25" y="223.083" width="32" height="32"/>
+  <object id="78" name="Slime" gid="125" x="64.75" y="288.75" width="32" height="32"/>
+  <object id="79" name="Slime" gid="125" x="175.5" y="297.5" width="32" height="32"/>
+  <object id="80" name="Slime" gid="125" x="139.833" y="156.5" width="32" height="32"/>
+  <object id="81" name="Slime" gid="125" x="294.5" y="135.75" width="32" height="32"/>
+  <object id="82" name="Slime" gid="125" x="222.5" y="77.25" width="32" height="32"/>
+  <object id="83" name="Slime" gid="125" x="276" y="275" width="32" height="32"/>
+  <object id="93" name="Chest" gid="127" x="301.75" y="100.75" width="20" height="20"/>
+ </objectgroup>
+</map>

@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
 enum class AnimationActor{
     PLAYER,SLIME,CHEST,UNDEFINED;
 
-    val atlasKey:String = this.toString().lowercase()
+    val atlasKey: String = this.toString().lowercase()
 }
 
 enum class AnimationType{

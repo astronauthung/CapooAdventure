@@ -1,0 +1,146 @@
+
+game.png
+size: 128, 256
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+chest/idle
+  rotate: false
+  xy: 2, 206
+  size: 48, 32
+  orig: 48, 32
+  offset: 0, 0
+  index: 4
+chest/idle
+  rotate: false
+  xy: 2, 172
+  size: 48, 32
+  orig: 48, 32
+  offset: 0, 0
+  index: 1
+chest/idle
+  rotate: false
+  xy: 36, 138
+  size: 48, 32
+  orig: 48, 32
+  offset: 0, 0
+  index: 3
+chest/idle
+  rotate: false
+  xy: 70, 104
+  size: 48, 32
+  orig: 48, 32
+  offset: 0, 0
+  index: 0
+chest/idle
+  rotate: false
+  xy: 36, 36
+  size: 48, 32
+  orig: 48, 32
+  offset: 0, 0
+  index: 2
+player/idle
+  rotate: false
+  xy: 52, 206
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 3
+player/idle
+  rotate: false
+  xy: 52, 172
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 0
+player/idle
+  rotate: false
+  xy: 86, 138
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 2
+player/idle
+  rotate: false
+  xy: 70, 70
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 4
+player/idle
+  rotate: false
+  xy: 2, 2
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 1
+slime/idle
+  rotate: false
+  xy: 86, 172
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 1
+slime/idle
+  rotate: false
+  xy: 2, 104
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 3
+slime/idle
+  rotate: false
+  xy: 2, 70
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 0
+slime/idle
+  rotate: false
+  xy: 86, 36
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 2
+slime/run
+  rotate: false
+  xy: 86, 206
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 4
+slime/run
+  rotate: false
+  xy: 2, 138
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 1
+slime/run
+  rotate: false
+  xy: 36, 104
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 3
+slime/run
+  rotate: false
+  xy: 36, 70
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 0
+slime/run
+  rotate: false
+  xy: 2, 36
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 5
+slime/run
+  rotate: false
+  xy: 36, 2
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 2
