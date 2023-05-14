@@ -2,6 +2,7 @@ package com.github.moonstruck.capooadventure.component
 
 import com.badlogic.gdx.math.Rectangle
 import com.badlogic.gdx.math.Shape2D
+import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.physics.box2d.Body
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType
 import com.badlogic.gdx.physics.box2d.World
@@ -12,10 +13,7 @@ import com.github.quillraven.fleks.ComponentListener
 import com.github.quillraven.fleks.Entity
 import com.github.quillraven.fleks.EntityCreateCfg
 import ktx.app.gdxError
-import ktx.box2d.BodyDefinition
-import ktx.box2d.body
-import ktx.box2d.circle
-import ktx.box2d.loop
+import ktx.box2d.*
 import ktx.math.vec2
 
 class PhysicComponent {
@@ -26,6 +24,7 @@ class PhysicComponent {
     lateinit var body : Body
 
     companion object {
+        private val TMP_VEC = Vector2()
         fun EntityCreateCfg.physicCmpFromShape2D(
             world: World,
             x: Int,
@@ -50,9 +49,8 @@ class PhysicComponent {
                                 vec2(bodyW, bodyH),
                                 vec2(0f, bodyH),
                             )
-                            circle (SPAWN_AREA_SIZE + 2f) {
-                                isSensor = true
-                            }
+                            TMP_VEC.set(bodyW*0.5f,bodyH*0.5f)
+                            box(SPAWN_AREA_SIZE + 4f, SPAWN_AREA_SIZE + 4f, TMP_VEC){ isSensor = true}
                         }
                     }
                 }

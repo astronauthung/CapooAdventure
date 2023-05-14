@@ -91,6 +91,15 @@ class AttackSystem(
                     return@query true
                 }
 
+                //no friendly fire
+                val isAttackerPlayer = entity in playerCmps
+                if(isAttackerPlayer && fixtureEntity !in playerCmps){
+                    return@query true
+                }else if(!isAttackerPlayer && fixtureEntity !in playerCmps){
+                    return@query true
+                }
+
+
                 configureEntity(fixtureEntity) {
                     lifeCmps.getOrNull(it)?.let { lifeCmp ->
                         lifeCmp.takeDamage += attackCmp.damage * MathUtils.random(0.9f, 1.2f)

@@ -111,6 +111,6 @@ class CollisionSpawnSystem (
         }
     }
     companion object {
-        const val SPAWN_AREA_SIZE = 3
+        const val SPAWN_AREA_SIZE = 1
     }
 }
