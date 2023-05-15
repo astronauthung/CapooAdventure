@@ -20,7 +20,7 @@ class LifeSystem(
     private val physicCmps : ComponentMapper<PhysicComponent>,
     private val animationCmps : ComponentMapper<AnimationComponent>,
 ) : IteratingSystem(){
-    private val damageFont =  BitmapFont(Gdx.files.internal("damage.fnt"))
+    private val damageFont =  BitmapFont(Gdx.files.internal("damage.fnt")).apply { data.setScale(0.33f) }
 
     private val floatingTextStyle = LabelStyle(damageFont, Color.WHITE)
 

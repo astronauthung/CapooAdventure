@@ -1,6 +1,7 @@
 package com.github.moonstruck.capooadventure.screen
 
 
+import com.badlogic.gdx.ai.GdxAI
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.maps.tiled.TiledMap
 import com.badlogic.gdx.maps.tiled.TmxMapLoader
@@ -51,6 +52,7 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
             add<PhysicComponent.Companion.PhysicComponentListener>()
             add<FloatingTextComponent.Companion.FloatingTextComponentListener>()
             add<StateComponent.Companion.StateComponentListener>()
+            add<AiComponent.Companion.AiComponentListener>()
         }
 
         systems {
@@ -65,6 +67,7 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
             add<PhysicSystem>()
             add<AnimationSystem>()
             add<StateSystem>()
+            add<AiSystem>()
             add<CameraSystem>()
             add<FloatingTextSystem>()
             add<RenderSystem>()
@@ -99,6 +102,8 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
 
     }
     override fun render(delta: Float) {
+        val dt = delta.coerceAtMost(0.25f)
+        GdxAI.getTimepiece().update(dt)
         eWorld.update(delta.coerceAtMost(0.25f))
     }
 
