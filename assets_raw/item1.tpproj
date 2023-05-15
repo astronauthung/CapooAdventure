@@ -1,6 +1,6 @@
 name=list_item
-filename=
-output=.
+filename=ui.atlas
+output=../assets/ui
 
 alias=true
 alphaThreshold=0
@@ -19,7 +19,7 @@ paddingX=2
 paddingY=2
 pot=true
 mof=false
-rotation=false
+rotation=true
 stripWhitespaceX=false
 stripWhitespaceY=false
 wrapX=ClampToEdge

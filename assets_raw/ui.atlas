@@ -1,5 +1,5 @@
 
-list_item.png
+ui.png
 size: 256, 64
 format: RGBA8888
 filter: Nearest, Nearest
@@ -13,7 +13,7 @@ avatar
   index: -1
 blood
   rotate: false
-  xy: 165, 59
+  xy: 170, 59
   size: 49, 3
   orig: 49, 3
   offset: 0, 0
@@ -26,15 +26,15 @@ energy
   offset: 0, 0
   index: -1
 hat
-  rotate: false
-  xy: 192, 23
+  rotate: true
+  xy: 197, 25
   size: 14, 16
   orig: 14, 16
   offset: 0, 0
   index: -1
 pants
   rotate: false
-  xy: 165, 18
+  xy: 170, 18
   size: 16, 12
   orig: 16, 12
   offset: 0, 0
@@ -69,29 +69,29 @@ sword
   index: -1
 sword_update
   rotate: false
-  xy: 192, 41
+  xy: 197, 41
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 touch_attack
   rotate: false
-  xy: 123, 22
+  xy: 128, 22
   size: 40, 40
   orig: 40, 40
   offset: 0, 0
   index: -1
 touch_knob
   rotate: false
-  xy: 165, 32
+  xy: 170, 32
   size: 25, 25
   orig: 25, 25
   offset: 0, 0
   index: -1
 touch_pad
   rotate: false
-  xy: 81, 22
-  size: 40, 40
-  orig: 40, 40
+  xy: 81, 17
+  size: 45, 45
+  orig: 45, 45
   offset: 0, 0
   index: -1

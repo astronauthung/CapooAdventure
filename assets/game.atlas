@@ -1,6 +1,6 @@
 
 game.png
-size: 1024, 64
+size: 512, 128
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
@@ -20,295 +20,344 @@ chest/idle
   index: 0
 chest/open
   rotate: false
-  xy: 24, 2
+  xy: 410, 70
   size: 20, 20
   orig: 20, 20
   offset: 0, 0
   index: 3
 chest/open
   rotate: false
-  xy: 46, 2
+  xy: 444, 104
   size: 20, 20
   orig: 20, 20
   offset: 0, 0
   index: 2
 chest/open
   rotate: false
-  xy: 68, 2
+  xy: 24, 2
   size: 20, 20
   orig: 20, 20
   offset: 0, 0
   index: 4
 chicken/idle
   rotate: false
-  xy: 90, 6
+  xy: 410, 52
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 1
 chicken/idle
   rotate: false
-  xy: 108, 6
+  xy: 466, 108
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 6
 chicken/idle
   rotate: false
-  xy: 126, 6
+  xy: 46, 6
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 3
 chicken/idle
   rotate: false
-  xy: 126, 6
+  xy: 46, 6
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 0
 chicken/idle
   rotate: false
-  xy: 144, 6
+  xy: 410, 34
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 8
 chicken/idle
   rotate: false
-  xy: 162, 6
+  xy: 484, 108
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 5
 chicken/idle
   rotate: false
-  xy: 162, 6
+  xy: 484, 108
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 7
 chicken/idle
   rotate: false
-  xy: 180, 6
+  xy: 64, 6
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 4
 player/attack
   rotate: false
-  xy: 104, 24
+  xy: 36, 92
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 2
 player/attack
   rotate: false
-  xy: 444, 24
+  xy: 172, 92
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
 player/attack
   rotate: false
-  xy: 852, 24
+  xy: 342, 92
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 0
 player/dead
   rotate: false
-  xy: 138, 24
+  xy: 2, 24
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 3
 player/dead
-  rotate: false
-  xy: 274, 24
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: 0
-player/idle
-  rotate: false
-  xy: 274, 24
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: 0
-player/dead
-  rotate: false
-  xy: 478, 24
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: 2
-player/dead
-  rotate: false
-  xy: 886, 24
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: 1
-player/idle
-  rotate: false
-  xy: 172, 24
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: 3
-player/idle
-  rotate: false
-  xy: 512, 24
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: 2
-player/idle
-  rotate: false
-  xy: 920, 24
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: 1
-player/run
   rotate: false
   xy: 70, 24
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 0
-player/run
+player/idle
   rotate: false
-  xy: 308, 24
+  xy: 70, 24
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 0
+player/dead
+  rotate: false
+  xy: 172, 58
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 2
-player/run
+player/dead
   rotate: false
-  xy: 546, 24
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: 4
-player/run
-  rotate: false
-  xy: 682, 24
+  xy: 376, 92
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
-player/run
+player/idle
   rotate: false
-  xy: 954, 24
+  xy: 36, 58
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 3
-slime/dead
+player/idle
   rotate: false
-  xy: 206, 24
+  xy: 206, 92
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
-  index: 4
-slime/dead
+  index: 2
+player/idle
   rotate: false
   xy: 342, 24
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
-slime/dead
+player/run
   rotate: false
-  xy: 580, 24
+  xy: 2, 58
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 0
+player/run
+  rotate: false
+  xy: 104, 92
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 2
+player/run
+  rotate: false
+  xy: 138, 24
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 4
+player/run
+  rotate: false
+  xy: 274, 92
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 1
+player/run
+  rotate: false
+  xy: 376, 58
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 3
-slime/dead
+slime/attack
   rotate: false
-  xy: 716, 24
+  xy: 2, 92
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 5
+slime/attack
+  rotate: false
+  xy: 70, 92
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 2
+slime/attack
+  rotate: false
+  xy: 138, 58
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 4
+slime/attack
+  rotate: false
+  xy: 172, 24
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 1
+slime/attack
+  rotate: false
+  xy: 240, 58
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 6
+slime/attack
+  rotate: false
+  xy: 274, 24
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 3
+slime/attack
+  rotate: false
+  xy: 410, 92
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 0
 slime/dead
   rotate: false
-  xy: 988, 24
+  xy: 36, 24
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 4
+slime/dead
+  rotate: false
+  xy: 104, 58
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 1
+slime/dead
+  rotate: false
+  xy: 206, 58
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 3
+slime/dead
+  rotate: false
+  xy: 240, 24
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 0
+slime/dead
+  rotate: false
+  xy: 308, 24
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 2
 slime/idle
   rotate: false
-  xy: 2, 24
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: 2
-slime/idle
-  rotate: false
-  xy: 376, 24
+  xy: 138, 92
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
 slime/idle
   rotate: false
-  xy: 614, 24
+  xy: 240, 92
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 3
 slime/idle
   rotate: false
-  xy: 750, 24
+  xy: 274, 58
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 0
-slime/run
+slime/idle
   rotate: false
-  xy: 36, 24
+  xy: 342, 58
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 2
 slime/run
   rotate: false
-  xy: 240, 24
+  xy: 70, 58
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 4
 slime/run
   rotate: false
-  xy: 410, 24
+  xy: 104, 24
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 1
 slime/run
   rotate: false
-  xy: 648, 24
+  xy: 206, 24
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 3
 slime/run
   rotate: false
-  xy: 784, 24
+  xy: 308, 92
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 0
 slime/run
   rotate: false
-  xy: 818, 24
+  xy: 308, 58
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 5
+slime/run
+  rotate: false
+  xy: 376, 24
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 2
