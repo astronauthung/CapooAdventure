@@ -240,14 +240,10 @@
  </layer>
  <objectgroup id="4" name="entities">
   <object id="3" name="Slime" gid="124" x="311.666" y="142.417" width="32" height="32"/>
-  <object id="4" name="Slime" gid="124" x="137.833" y="240.583" width="32" height="32"/>
-  <object id="5" name="Slime" gid="124" x="139.5" y="210" width="32" height="32"/>
   <object id="6" name="Slime" gid="124" x="277.166" y="146" width="32" height="32"/>
   <object id="7" name="Slime" gid="124" x="290" y="124.167" width="32" height="32"/>
-  <object id="9" name="Player" gid="129" x="24" y="136.75" width="32" height="32"/>
+  <object id="9" name="Player" gid="129" x="13.5" y="134.75" width="32" height="32"/>
   <object id="26" name="Chest" gid="125" x="241.333" y="177.333" width="16" height="16"/>
-  <object id="27" name="Slime" gid="124" x="358.833" y="209.167" width="32" height="32"/>
-  <object id="28" name="Slime" gid="124" x="269.5" y="262" width="32" height="32"/>
   <object id="29" name="Slime" gid="124" x="295.5" y="212" width="32" height="32"/>
   <object id="30" name="Chicken" gid="126" x="195" y="137.667" width="16" height="16"/>
   <object id="31" name="Chicken" gid="126" x="412.5" y="164" width="16" height="16"/>
