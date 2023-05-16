@@ -8,10 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable
 import com.github.moonstruck.capooadventure.Ui.get
 import ktx.assets.disposeSafely
 import ktx.scene2d.Scene2DSkin
-import ktx.style.label
-import ktx.style.set
-import ktx.style.skin
-import ktx.style.touchpad
+import ktx.style.*
 
 
 enum class Drawables(
@@ -24,6 +21,9 @@ enum class Drawables(
     MANA_BAR("energy"),
     FRAME_BGD("frame_bgd"),
     FRAME_FGD("frame_fgd1"),
+    TOUCH_PAD("touch_pad"),
+    TOUCH_KNOB("touch_knob"),
+    TOUCH_ATTACK("touch_attack")
 }
 operator fun Skin.get(drawable: Drawables): Drawable = this.getDrawable(drawable.atlasKey)
 
@@ -73,8 +73,12 @@ fun loadSkin()
             }
         }
         touchpad {
-            background = skin.getDrawable("touch_pad")
-            knob = skin.getDrawable("touch_knob")
+            background = skin[Drawables.TOUCH_PAD]
+            knob = skin[Drawables.TOUCH_KNOB]
+        }
+        imageButton {
+            imageUp = skin[Drawables.TOUCH_ATTACK]
+            imageDown = skin[Drawables.TOUCH_ATTACK]
         }
     }
 }

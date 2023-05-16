@@ -4,6 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.Event
 import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.github.moonstruck.capooadventure.component.AnimationComponent
+import com.github.moonstruck.capooadventure.component.AttackComponent
 import com.github.moonstruck.capooadventure.component.LifeComponent
 import com.github.moonstruck.capooadventure.component.PlayerComponent
 import com.github.moonstruck.capooadventure.event.EntityAggroEvent
@@ -24,6 +25,8 @@ class GameModel(
     private val playerCmps:ComponentMapper<PlayerComponent> = world.mapper()
     private val lifeCmps:ComponentMapper<LifeComponent> = world.mapper()
     private val animationCmps:ComponentMapper<AnimationComponent> = world.mapper()
+    private val attackCmps: ComponentMapper<AttackComponent> = world.mapper()
+    private val playerEntities = world.family(allOf = arrayOf(PlayerComponent::class))
 
     var playerLife by propertyNotify(1f)
 
@@ -74,5 +77,12 @@ class GameModel(
 
     fun onTouchChange(knobPercentX: Float, knobPercentY: Float) {
         playerInputProcessor.touchpadMove(knobPercentX,knobPercentY)
+    }
+    fun clickAttack(){
+        playerEntities.forEach {
+            with(attackCmps[it]){
+                doAttack = true
+            }
+        }
     }
 }

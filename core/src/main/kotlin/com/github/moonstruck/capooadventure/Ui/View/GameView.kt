@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions
 import com.badlogic.gdx.scenes.scene2d.actions.Actions.*
 import com.badlogic.gdx.scenes.scene2d.actions.DelayAction
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton
 import com.badlogic.gdx.scenes.scene2d.ui.Label
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.badlogic.gdx.scenes.scene2d.ui.Table
@@ -17,10 +18,7 @@ import com.github.moonstruck.capooadventure.Ui.get
 import com.github.moonstruck.capooadventure.Ui.Widget.TouchpadInfo
 import com.github.moonstruck.capooadventure.Ui.Widget.touchpadInfo
 import com.github.moonstruck.capooadventure.Ui.model.GameModel
-import ktx.actors.alpha
-import ktx.actors.onChangeEvent
-import ktx.actors.plusAssign
-import ktx.actors.txt
+import ktx.actors.*
 import ktx.scene2d.*
 
 class GameView(
@@ -52,18 +50,24 @@ class GameView(
             this.alpha = 0f
             it.expand().width(100f).height(65f).top().row()
 
-            touchpad(0f){ cell ->
-                this.onChangeEvent {
-                    model.onTouchChange(knobPercentX,knobPercentY)
-                }
-                cell.expand()
-                    .align(Align.left)
-                    .bottom()
-
-            }
         }
 
-        playerInfo = touchpadInfo(Drawables.PLAYER,skin)
+        playerInfo = touchpadInfo(Drawables.PLAYER,skin){cell->
+            cell.align(Align.topLeft).row()
+        }
+        touchpad(0f){ cell ->
+            this.onChangeEvent {
+                model.onTouchChange(knobPercentX,knobPercentY)
+            }
+            cell.left().bottom()
+        }
+        imageButton {
+            this.onClick {
+                model.clickAttack()
+            }
+            it.right().bottom()
+        }
+
 
 
         //data binding

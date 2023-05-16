@@ -13,8 +13,8 @@ import ktx.actors.plusAssign
 import ktx.scene2d.*
 
 class TouchpadInfo(charDrawable:Drawables?,private val skin: Skin) : WidgetGroup(), KGroup {
-    private val touchBackground : Image = Image(skin.getDrawable("touch_pad"))
-    private val touchKnob : Image = Image(skin.getDrawable("touch_knob"))
+    private val touchBackground : Image = Image(skin[Drawables.TOUCH_PAD])
+    private val touchKnob : Image = Image(skin[Drawables.TOUCH_KNOB])
 
     private val background : Image = Image(skin[Drawables.CHAR_INFO_BGD])
     private val charBgd : Image = Image(if(charDrawable==null) null else skin[charDrawable])
@@ -22,8 +22,8 @@ class TouchpadInfo(charDrawable:Drawables?,private val skin: Skin) : WidgetGroup
     private val manaBar : Image = Image(skin[Drawables.MANA_BAR])
 
     init {
-        this += touchBackground
-        this += touchKnob
+//        this += touchBackground
+//        this += touchKnob
         this += background
         this += charBgd.apply {
             setPosition(1.5f,1f)
