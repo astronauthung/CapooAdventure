@@ -1,10 +1,12 @@
 package com.github.moonstruck.capooadventure.screen
 
+import com.badlogic.gdx.Game
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input
 import com.badlogic.gdx.scenes.scene2d.InputListener
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.utils.viewport.ExtendViewport
+import com.github.moonstruck.capooadventure.Ui.Drawables
 import com.github.moonstruck.capooadventure.Ui.View.GameView
 import com.github.moonstruck.capooadventure.Ui.View.gameView
 import com.github.moonstruck.capooadventure.Ui.disposeSkin
@@ -16,36 +18,44 @@ import ktx.scene2d.actors
 
 class UiScreen : KtxScreen {
     private val stage: Stage = Stage(ExtendViewport(320f,180f))
-
+    private lateinit var gameView:GameView
 
     init {
         loadSkin()
     }
-    override fun dispose() {
-        stage.dispose()
-        disposeSkin()
-    }
 
+    override fun resize(width: Int, height: Int) {
+        stage.viewport.update(width,height,true)
+    }
+    override fun show() {
+        stage.clear()
+        stage.actors {
+            gameView = gameView(GameModel(stage))
+        }
+        Gdx.input.inputProcessor = stage
+        stage.isDebugAll = true
+    }
     override fun render(delta: Float) {
         if(Gdx.input.isKeyPressed(Input.Keys.R)){
             hide()
             show()
+        }else if(Gdx.input.isKeyPressed(Input.Keys.NUM_1)){
+            gameView.playerLife(0f)
+        }else if(Gdx.input.isKeyPressed(Input.Keys.NUM_2)){
+            gameView.playerLife(0.5f)
+        }else if(Gdx.input.isKeyPressed(Input.Keys.NUM_3)){
+            gameView.playerLife(1f)
+        }else if(Gdx.input.isKeyPressed(Input.Keys.NUM_4)){
+            gameView.showEnemyInfo(Drawables.SLIME,0.5f)
         }
         stage.act()
         stage.draw()
     }
 
-    override fun resize(width: Int, height: Int) {
-        stage.viewport.update(width,height)
-    }
 
-    override fun show() {
-        stage.clear()
-        stage.actors {
-            gameView(GameModel(stage))
-        }
-        Gdx.input.inputProcessor = stage
-        stage.isDebugAll = true
+    override fun dispose() {
+        stage.dispose()
+        disposeSkin()
     }
 
 

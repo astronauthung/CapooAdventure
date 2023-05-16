@@ -17,6 +17,7 @@ enum class Drawables(
 ){
     CHAR_INFO_BGD("avatar"),
     PLAYER("player"),
+    SLIME("slime"),
     LIFE_BAR("blood"),
     MANA_BAR("energy"),
 }

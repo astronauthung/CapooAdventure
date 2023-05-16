@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.badlogic.gdx.utils.Align
 import com.github.moonstruck.capooadventure.Ui.Drawables
+import com.github.moonstruck.capooadventure.Ui.Widget.TouchpadInfo
 import com.github.moonstruck.capooadventure.Ui.Widget.touchpadInfo
 import com.github.moonstruck.capooadventure.Ui.model.GameModel
 import ktx.actors.onChangeEvent
@@ -14,9 +15,16 @@ class GameView(
     skin: Skin,
     model : GameModel
     ) : Table(skin), KTable {
+
+    private val playerInfo : TouchpadInfo
+    private val enemyInfo : TouchpadInfo
+
     init {
         setFillParent(true)
-        touchpadInfo(Drawables.PLAYER)
+        playerInfo = touchpadInfo(Drawables.PLAYER)
+        enemyInfo = touchpadInfo(Drawables.PLAYER){
+            it.row()
+        }
 //        table{
 //            bottomTableCell ->
 //            touchpad(0f){ cell ->
@@ -29,6 +37,15 @@ class GameView(
 //                    .pad(-10f,-170f,-70f,5f)
 //            }
 //        }
+    }
+
+    fun playerLife(percentage: Float){
+        playerInfo.life(percentage)
+    }
+
+    fun showEnemyInfo(charDrawable: Drawables,lifePercentage: Float){
+        enemyInfo.character(charDrawable)
+        enemyInfo.life(lifePercentage,0f)
     }
 }
 
