@@ -22,7 +22,7 @@ class PlayerInputProcessor(
 ): KtxInputAdapter {
     private val playerEntities = world.family(allOf = arrayOf(PlayerComponent::class))
     init {
-        Gdx.input.inputProcessor = this
+        gdxInputProcessor(this)
     }
 
     fun touchpadMove(x:Float,y:Float){

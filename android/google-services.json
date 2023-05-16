@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "802375344087",
+    "project_id": "finalproject-23670",
+    "storage_bucket": "finalproject-23670.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:802375344087:android:51fa4c21fccb31feb3f592",
+        "android_client_info": {
+          "package_name": "com.github.moonstruck.capooadventure"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "802375344087-1ru8m9njpvih5ml6kt6ve53vvqbquk5b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYwnoEhiqjivu6l2lFehI1yJFMiOc9Gtc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "802375344087-1ru8m9njpvih5ml6kt6ve53vvqbquk5b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

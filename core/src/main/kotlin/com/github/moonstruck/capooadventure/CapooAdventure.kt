@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.utils.viewport.ExtendViewport
 import com.github.moonstruck.capooadventure.screen.GameScreen
+import com.github.moonstruck.capooadventure.screen.InventoryUiScreen
 import com.github.moonstruck.capooadventure.screen.UiScreen
 import ktx.app.KtxGame
 import ktx.app.KtxScreen
@@ -26,7 +27,9 @@ class CapooAdventure : KtxGame<KtxScreen>() , EventListener{
 
         addScreen(GameScreen(this))
         addScreen(UiScreen())
-        setScreen<GameScreen>()
+        addScreen(InventoryUiScreen())
+//        setScreen<GameScreen>()
+        setScreen<InventoryUiScreen>()
 //        setScreen<UiScreen>()
 
     }

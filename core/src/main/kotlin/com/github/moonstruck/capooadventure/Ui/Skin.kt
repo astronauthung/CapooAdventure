@@ -1,6 +1,7 @@
 package com.github.moonstruck.capooadventure.Ui
 
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
@@ -19,8 +20,16 @@ enum class Drawables(
     SLIME("slime"),
     LIFE_BAR("blood"),
     MANA_BAR("energy"),
+
     FRAME_BGD("frame_bgd"),
     FRAME_FGD("frame_fgd1"),
+
+    INVENTORY_SLOT("frame_fgd2"),
+    INVENTORY_SLOT_HELMET("hat"),
+    INVENTORY_SLOT_WEAPON("sword"),
+    INVENTORY_SLOT_ARMOR("pants"),
+    INVENTORY_SLOT_BOOTS("shoe"),
+
     TOUCH_PAD("touch_pad"),
     TOUCH_KNOB("touch_knob"),
     TOUCH_ATTACK("touch_attack")
@@ -28,7 +37,8 @@ enum class Drawables(
 operator fun Skin.get(drawable: Drawables): Drawable = this.getDrawable(drawable.atlasKey)
 
 enum class Labels{
-    FRAME;
+    FRAME,
+    TITLE;
 
     val skinKey = this.name.lowercase()
 }
@@ -37,7 +47,8 @@ enum class Fonts(
     val atlasRegionKey: String,
     val scaling : Float,
 ){
-    DEFAULT("font1",0.25f);
+    DEFAULT("font1",0.25f),
+    BIG("font1", 0.15f);
 
     val skinKey = "Font_${this.name.lowercase()}"
     val fontPath = "ui/${this.atlasRegionKey}.fnt"
@@ -66,6 +77,15 @@ fun loadSkin()
 
         label(Labels.FRAME.skinKey) {
             font = skin[Fonts.DEFAULT]
+            background = skin[Drawables.FRAME_FGD].apply{
+                leftWidth = 3f
+                rightWidth = 2f
+                topHeight = 1f
+            }
+        }
+        label(Labels.TITLE.skinKey) {
+            font = skin[Fonts.BIG]
+            fontColor = Color.SLATE
             background = skin[Drawables.FRAME_FGD].apply{
                 leftWidth = 3f
                 rightWidth = 2f

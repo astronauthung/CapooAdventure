@@ -10,6 +10,8 @@ import com.github.moonstruck.capooadventure.event.MapChangeEvent
 import com.github.quillraven.fleks.*
 import ktx.tiled.height
 import ktx.tiled.width
+import java.lang.Float.max
+import java.lang.Float.min
 
 
 @AllOf([PlayerComponent::class, ImageComponent::class])

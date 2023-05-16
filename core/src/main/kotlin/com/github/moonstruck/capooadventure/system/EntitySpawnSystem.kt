@@ -90,6 +90,12 @@ class EntitySpawnSystem(
                 if (name == "Player") {
                     add<PlayerComponent>()
                     add<StateComponent>()
+                    add<InventoryComponent> {
+                        itemsToAdd += ItemType.ARMOR
+                        itemsToAdd += ItemType.HELMET
+                        itemsToAdd += ItemType.BOOTS
+                        itemsToAdd += ItemType.WEAPON
+                    }
                 }
 
                 if(cfg.lootable){
