@@ -4,6 +4,8 @@ import com.badlogic.gdx.Game
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.badlogic.gdx.utils.Align
+import com.github.moonstruck.capooadventure.Ui.Drawables
+import com.github.moonstruck.capooadventure.Ui.Widget.touchpadInfo
 import com.github.moonstruck.capooadventure.Ui.model.GameModel
 import ktx.actors.onChangeEvent
 import ktx.scene2d.*
@@ -14,18 +16,19 @@ class GameView(
     ) : Table(skin), KTable {
     init {
         setFillParent(true)
-        table{
-            bottomTableCell ->
-            touchpad(0f){ cell ->
-                this.onChangeEvent {
-                    model.onTouchChange(knobPercentX,knobPercentY)
-                }
-                cell.expand()
-                    .align(Align.left)
-                    .bottom()
-                    .pad(-10f,-170f,-70f,5f)
-            }
-        }
+        touchpadInfo(Drawables.PLAYER)
+//        table{
+//            bottomTableCell ->
+//            touchpad(0f){ cell ->
+//                this.onChangeEvent {
+//                    model.onTouchChange(knobPercentX,knobPercentY)
+//                }
+//                cell.expand()
+//                    .align(Align.left)
+//                    .bottom()
+//                    .pad(-10f,-170f,-70f,5f)
+//            }
+//        }
     }
 }
 

@@ -7,9 +7,9 @@ import com.github.moonstruck.capooadventure.input.PlayerInputProcessor
 import com.github.quillraven.fleks.World
 
 class GameModel(
-    world: World,
+//    world: World,
     stage: Stage,
-    private val playerInputProcessor: PlayerInputProcessor,
+//    private val playerInputProcessor: PlayerInputProcessor,
 ) : EventListener{
     init{
         stage.addListener(this)
@@ -19,7 +19,7 @@ class GameModel(
         return true
     }
 
-    fun onTouchChange(knobPercentX: Float, knobPercentY: Float) {
-        playerInputProcessor.touchpadMove(knobPercentX,knobPercentY)
-    }
+//    fun onTouchChange(knobPercentX: Float, knobPercentY: Float) {
+//        playerInputProcessor.touchpadMove(knobPercentX,knobPercentY)
+//    }
 }

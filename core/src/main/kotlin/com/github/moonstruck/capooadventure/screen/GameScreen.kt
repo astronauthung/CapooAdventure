@@ -95,9 +95,9 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
         currentMap = TmxMapLoader().load("map.tmx")
         gameStage.fire(MapChangeEvent(currentMap!!))
 
-        uiStage.actors {
-            gameView(GameModel(eWorld,gameStage, PlayerInputProcessor(eWorld)))
-        }
+//        uiStage.actors {
+//            gameView(GameModel(eWorld,gameStage, PlayerInputProcessor(eWorld)))
+//        }
         gdxInputProcessor(uiStage)
 
     }
