@@ -18,8 +18,7 @@ import ktx.scene2d.actors
 
 class UiScreen : KtxScreen {
     private val stage: Stage = Stage(ExtendViewport(320f,180f))
-    private lateinit var gameView:GameView
-
+//    private lateinit var gameView: GameView
     init {
         loadSkin()
     }
@@ -30,24 +29,19 @@ class UiScreen : KtxScreen {
     override fun show() {
         stage.clear()
         stage.actors {
-            gameView = gameView(GameModel(stage))
+          gameView(GameModel(stage))
         }
         Gdx.input.inputProcessor = stage
         stage.isDebugAll = true
     }
     override fun render(delta: Float) {
-        if(Gdx.input.isKeyPressed(Input.Keys.R)){
+        if(Gdx.input.isKeyPressed(Input.Keys.R)) {
             hide()
             show()
-        }else if(Gdx.input.isKeyPressed(Input.Keys.NUM_1)){
-            gameView.playerLife(0f)
-        }else if(Gdx.input.isKeyPressed(Input.Keys.NUM_2)){
-            gameView.playerLife(0.5f)
-        }else if(Gdx.input.isKeyPressed(Input.Keys.NUM_3)){
-            gameView.playerLife(1f)
-        }else if(Gdx.input.isKeyPressed(Input.Keys.NUM_4)){
-            gameView.showEnemyInfo(Drawables.SLIME,0.5f)
         }
+//        }else if(Gdx.input.isKeyPressed(Input.Keys.E)){
+//            gameView.popup("You found something [#ff0000]cool[]!")
+//        }
         stage.act()
         stage.draw()
     }
