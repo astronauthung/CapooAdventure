@@ -8,6 +8,7 @@ import com.badlogic.gdx.ai.utils.random.FloatDistribution
 import com.badlogic.gdx.graphics.g2d.Animation
 import com.badlogic.gdx.math.MathUtils
 import com.github.moonstruck.capooadventure.component.AnimationType
+import com.github.moonstruck.capooadventure.event.EntityAggroEvent
 import ktx.math.vec2
 
 abstract class Action :LeafTask<AiEntity>(){
@@ -75,6 +76,7 @@ class attackTask : Action(){
     override fun execute(): Status {
         if(status != Status.RUNNING){
             entity.animation(AnimationType.ATTACK,Animation.PlayMode.NORMAL,true)
+            entity.fireEvent(EntityAggroEvent(entity.entity))
             entity.doAndStartAttack()
             return Status.RUNNING
         }

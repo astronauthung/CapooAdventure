@@ -72,6 +72,10 @@ fun loadSkin()
                 topHeight = 1f
             }
         }
+        touchpad {
+            background = skin.getDrawable("touch_pad")
+            knob = skin.getDrawable("touch_knob")
+        }
     }
 }
 

@@ -5,9 +5,12 @@ import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.g2d.Animation
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.math.Vector2
+import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.Label
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle
 import com.github.moonstruck.capooadventure.component.*
+import com.github.moonstruck.capooadventure.event.EntityDamageEvent
+import com.github.moonstruck.capooadventure.event.fire
 import com.github.quillraven.fleks.*
 
 
@@ -19,6 +22,7 @@ class LifeSystem(
     private val playerCmps : ComponentMapper<PlayerComponent>,
     private val physicCmps : ComponentMapper<PhysicComponent>,
     private val animationCmps : ComponentMapper<AnimationComponent>,
+    @Qualifier("GameStage") private val gameStage : Stage,
 ) : IteratingSystem(){
     private val damageFont =  BitmapFont(Gdx.files.internal("damage.fnt")).apply { data.setScale(0.33f) }
 
@@ -31,6 +35,7 @@ class LifeSystem(
         if(lifeCmp.takeDamage > 0f){
             val physicCmp = physicCmps[entity]
             lifeCmp.life -= lifeCmp.takeDamage
+            gameStage.fire(EntityDamageEvent(entity))
             floatingText(lifeCmp.takeDamage.toInt().toString(),physicCmp.body.position,physicCmp.size)
             lifeCmp.takeDamage = 0f
         }

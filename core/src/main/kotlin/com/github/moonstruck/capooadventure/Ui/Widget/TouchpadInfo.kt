@@ -22,6 +22,8 @@ class TouchpadInfo(charDrawable:Drawables?,private val skin: Skin) : WidgetGroup
     private val manaBar : Image = Image(skin[Drawables.MANA_BAR])
 
     init {
+        this += touchBackground
+        this += touchKnob
         this += background
         this += charBgd.apply {
             setPosition(1.5f,1f)
@@ -32,9 +34,9 @@ class TouchpadInfo(charDrawable:Drawables?,private val skin: Skin) : WidgetGroup
         this += manaBar.apply { setPosition(26f,13f) }
     }
 
-    override fun getPrefWidth() = touchBackground.drawable.minWidth
+    override fun getPrefWidth() = background.drawable.minWidth
 
-    override fun getPrefHeight() = touchBackground.drawable.minHeight
+    override fun getPrefHeight() = background.drawable.minHeight
 
 
     fun character(charDrawable: Drawables?){

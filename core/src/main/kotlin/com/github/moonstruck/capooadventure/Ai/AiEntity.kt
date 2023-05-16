@@ -4,7 +4,10 @@ import com.badlogic.gdx.graphics.g2d.Animation.PlayMode
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Rectangle
 import com.badlogic.gdx.math.Vector2
+import com.badlogic.gdx.scenes.scene2d.Event
+import com.badlogic.gdx.scenes.scene2d.Stage
 import com.github.moonstruck.capooadventure.component.*
+import com.github.moonstruck.capooadventure.event.fire
 import com.github.quillraven.fleks.ComponentMapper
 import com.github.quillraven.fleks.Entity
 import com.github.quillraven.fleks.World
@@ -15,8 +18,9 @@ import ktx.math.vec2
 private val TMP_RECT = Rectangle()
 
 data class AiEntity(
-    private val entity: Entity,
+    val entity: Entity,
     private val world: World,
+    private val stage: Stage,
     private val animationCmps: ComponentMapper<AnimationComponent> = world.mapper(),
     private val moveCmps : ComponentMapper<MoveComponent> = world.mapper(),
     private val attackCmps : ComponentMapper<AttackComponent> = world.mapper(),
@@ -141,6 +145,10 @@ data class AiEntity(
             .filter { it in playerCmps && !lifeCmps[it].isDead }
     }
     fun hasEnemyNearby():Boolean = nearbyEnemies().isNotEmpty()
+
+    fun fireEvent(event:Event){
+        stage.fire(event)
+    }
 
     fun stopMovement(){
         with(moveCmps[entity]){

@@ -78,6 +78,11 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
 
     init {
         loadSkin()
+
+        uiStage.actors {
+            gameView(GameModel(eWorld,gameStage, playerInputProcessor = PlayerInputProcessor(eWorld)))
+        }
+
         eWorld.systems.forEach { system ->
             if (system is EventListener) {
                 gameStage.addListener(system)
