@@ -72,7 +72,9 @@ class GameView(
             this.onClick {
                 model.openInventory()
             }
-            it.right().bottom()
+            it.fill()
+                .pad(-35f, 5f, 15f, 10f)
+                .top()
             }
 
 

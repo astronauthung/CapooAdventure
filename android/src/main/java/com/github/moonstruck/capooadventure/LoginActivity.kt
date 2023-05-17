@@ -19,6 +19,8 @@ class LoginActivity : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
+        getSupportActionBar()?.hide();
+
         setContentView(R.layout.activity_login)
 
         findViewById<TextView>(R.id.register).setOnClickListener {
@@ -33,6 +35,7 @@ class LoginActivity : AppCompatActivity() {
             if (user.isNotEmpty() && pass.isNotEmpty()) {
                 firebaseAuth.signInWithEmailAndPassword(user, pass).addOnCompleteListener {
                     if (it.isSuccessful) {
+                        Toast.makeText(this, "Successful", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, AndroidLauncher::class.java)
                         startActivity(intent)
                     } else {
