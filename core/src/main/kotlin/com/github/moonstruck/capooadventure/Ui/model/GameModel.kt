@@ -82,9 +82,7 @@ class GameModel(
     fun clickAttack(){
         playerEntities.forEach {
             with(attackCmps[it]){
-                startAttack()
                 doAttack = true
-                delay = 0f
             }
         }
     }
