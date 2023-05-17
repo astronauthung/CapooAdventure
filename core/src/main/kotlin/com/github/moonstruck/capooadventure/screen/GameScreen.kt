@@ -7,7 +7,6 @@ import com.badlogic.gdx.maps.tiled.TiledMap
 import com.badlogic.gdx.maps.tiled.TmxMapLoader
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.EventListener
-import com.github.moonstruck.capooadventure.Ui.View.GameView
 import com.github.moonstruck.capooadventure.Ui.disposeSkin
 import com.github.moonstruck.capooadventure.Ui.loadSkin
 import com.github.moonstruck.capooadventure.event.MapChangeEvent
@@ -22,8 +21,7 @@ import ktx.math.vec2
 import ktx.scene2d.Scene2DSkin
 import ktx.scene2d.actors
 import com.github.moonstruck.capooadventure.CapooAdventure
-import com.github.moonstruck.capooadventure.Ui.View.gameView
-import com.github.moonstruck.capooadventure.Ui.View.inventoryView
+import com.github.moonstruck.capooadventure.Ui.View.*
 import com.github.moonstruck.capooadventure.Ui.model.GameModel
 import com.github.moonstruck.capooadventure.Ui.model.InventoryModel
 import com.github.moonstruck.capooadventure.component.*
@@ -83,10 +81,11 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
         loadSkin()
 
         uiStage.actors {
-            gameView(GameModel(eWorld,gameStage, playerInputProcessor = PlayerInputProcessor(eWorld,uiStage)))
+            gameView(GameModel(eWorld,gameStage, playerInputProcessor = PlayerInputProcessor(eWorld,gameStage,uiStage)))
             inventoryView(InventoryModel(eWorld,gameStage)){
                 this.isVisible=false
             }
+            pauseView { this.isVisible = false }
         }
 
         eWorld.systems.forEach { system ->
@@ -94,9 +93,6 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
                 gameStage.addListener(system)
             }
         }
-    }
-    override fun resize(width: Int, height: Int) {
-        gameStage.viewport.update(width, height, true)
     }
 
 
@@ -112,14 +108,34 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
         gdxInputProcessor(uiStage)
 
     }
+
+    private fun pauseWorld(pause:Boolean){
+        val mandatorySystems = setOf(
+            AnimationSystem::class,
+            CameraSystem::class,
+            RenderSystem::class,
+            DebugSystem::class,
+        )
+
+        eWorld.systems
+            .filter { it::class !in mandatorySystems }
+            .forEach{
+                it.enabled = !pause
+            }
+        uiStage.actors.filterIsInstance<PauseView>().first().isVisible = pause
+    }
+
+    override fun pause()  = pauseWorld(true)
+
+    override fun resume() = pauseWorld(false)
+
     override fun render(delta: Float) {
         val dt = delta.coerceAtMost(0.25f)
         GdxAI.getTimepiece().update(dt)
-        eWorld.update(delta.coerceAtMost(0.25f))
+        eWorld.update(dt)
     }
 
     override fun dispose() {
-        gameStage.disposeSafely()
         textureAtlas.disposeSafely()
         eWorld.dispose()
         currentMap.disposeSafely()

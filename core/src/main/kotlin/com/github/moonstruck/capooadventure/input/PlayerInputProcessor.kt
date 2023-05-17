@@ -9,7 +9,11 @@ import com.badlogic.gdx.scenes.scene2d.Stage
 import com.github.moonstruck.capooadventure.component.AttackComponent
 import com.github.moonstruck.capooadventure.component.MoveComponent
 import com.github.moonstruck.capooadventure.component.PlayerComponent
+import com.github.moonstruck.capooadventure.event.GamePauseEvent
+import com.github.moonstruck.capooadventure.event.GameResumeEvent
+import com.github.moonstruck.capooadventure.event.fire
 import com.github.quillraven.fleks.ComponentMapper
+import com.github.quillraven.fleks.Qualifier
 import ktx.app.KtxInputAdapter
 import com.github.quillraven.fleks.World
 
@@ -17,12 +21,14 @@ import com.github.quillraven.fleks.World
 class PlayerInputProcessor(
 
     world: World,
-    private val uiStage: Stage,
+    @Qualifier("GameStage")private val gameStage : Stage,
+    @Qualifier("UiStage")private val uiStage: Stage,
     private val moveCmps: ComponentMapper<MoveComponent> = world.mapper(),
     private val attackCmps: ComponentMapper<AttackComponent> = world.mapper(),
 
     ): KtxInputAdapter {
     private val playerEntities = world.family(allOf = arrayOf(PlayerComponent::class))
+    private var pause = false
     init {
         gdxInputProcessor(this)
     }
@@ -47,6 +53,9 @@ class PlayerInputProcessor(
                     doAttack = true
                 }
             }
+        }else if(keycode == P){
+            pause = !pause
+            gameStage.fire(if (pause) GamePauseEvent()  else GameResumeEvent())
         }
         return true
     }

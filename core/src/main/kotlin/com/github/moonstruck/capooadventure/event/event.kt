@@ -25,3 +25,6 @@ class EntityDamageEvent(val entity: Entity) : Event()
 class EntityAggroEvent(val entity: Entity): Event()
 
 class EntityAddItemEvent(val entity: Entity, val item: Entity): Event()
+
+class GamePauseEvent:Event()
+class GameResumeEvent:Event()

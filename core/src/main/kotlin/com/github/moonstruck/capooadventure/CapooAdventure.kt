@@ -7,6 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.Event
 import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.utils.viewport.ExtendViewport
+import com.github.moonstruck.capooadventure.event.GamePauseEvent
+import com.github.moonstruck.capooadventure.event.GameResumeEvent
 import com.github.moonstruck.capooadventure.screen.GameScreen
 import com.github.moonstruck.capooadventure.screen.InventoryUiScreen
 import com.github.moonstruck.capooadventure.screen.UiScreen
@@ -20,7 +22,7 @@ class CapooAdventure : KtxGame<KtxScreen>() , EventListener{
     private val batch: Batch by lazy { SpriteBatch() }
     val gameStage by lazy { Stage(ExtendViewport(16f, 9f), batch) }
     val uiStage by lazy { Stage(ExtendViewport(320f, 180f), batch) }
-    private val paused = false
+    private var paused = false
     override fun create() {
 
         gameStage.addListener(this)
@@ -35,7 +37,6 @@ class CapooAdventure : KtxGame<KtxScreen>() , EventListener{
     }
 
     override fun resize(width: Int, height: Int) {
-        super.resize(width, height)
         gameStage.viewport.update(width, height, true)
         uiStage.viewport.update(width, height, true)
     }
@@ -59,7 +60,18 @@ class CapooAdventure : KtxGame<KtxScreen>() , EventListener{
         const val UNIT_SCALE = 1 / 16f
     }
 
-    override fun handle(event: Event?): Boolean {
+    override fun handle(event: Event): Boolean {
+        when(event){
+            is GamePauseEvent -> {
+                paused = true
+                currentScreen.pause()
+            }
+            is GameResumeEvent ->{
+                paused = false
+                currentScreen.resume()
+            }
+            else -> return false
+        }
         return true;
     }
 }

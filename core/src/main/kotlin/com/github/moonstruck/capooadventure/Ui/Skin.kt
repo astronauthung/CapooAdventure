@@ -40,7 +40,8 @@ operator fun Skin.get(drawable: Drawables): Drawable = this.getDrawable(drawable
 
 enum class Labels{
     FRAME,
-    TITLE;
+    TITLE,
+    LARGE;
 
     val skinKey = this.name.lowercase()
 }
@@ -50,7 +51,7 @@ enum class Fonts(
     val scaling : Float,
 ){
     DEFAULT("font1",0.25f),
-    BIG("font1", 0.15f);
+    BIG("font1", 0.5f);
 
     val skinKey = "Font_${this.name.lowercase()}"
     val fontPath = "ui/${this.atlasRegionKey}.fnt"
@@ -93,6 +94,9 @@ fun loadSkin()
                 rightWidth = 2f
                 topHeight = 1f
             }
+        }
+        label(Labels.LARGE.skinKey) {
+            font = skin[Fonts.BIG]
         }
         touchpad {
             background = skin[Drawables.TOUCH_PAD]
