@@ -83,9 +83,9 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
         loadSkin()
 
         uiStage.actors {
-            gameView(GameModel(eWorld,gameStage, playerInputProcessor = PlayerInputProcessor(eWorld)))
+            gameView(GameModel(eWorld,gameStage, playerInputProcessor = PlayerInputProcessor(eWorld,uiStage)))
             inventoryView(InventoryModel(eWorld,gameStage)){
-                this.isVisible=true
+                this.isVisible=false
             }
         }
 

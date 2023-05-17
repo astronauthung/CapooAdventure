@@ -28,7 +28,7 @@ class UiScreen : KtxScreen {
     private val stage: Stage = Stage(ExtendViewport(320f,180f))
     private val eWorld = world{}
     private val playerEntity : Entity
-    private val model = GameModel(world {},stage, playerInputProcessor = PlayerInputProcessor(world {}))
+    private val model = GameModel(world {},stage, playerInputProcessor = PlayerInputProcessor(world {},stage))
     private lateinit var gameView: GameView
     init {
         playerEntity = eWorld.entity{

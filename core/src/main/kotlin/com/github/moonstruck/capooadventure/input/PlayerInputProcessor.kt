@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input.Keys.*
 import com.badlogic.gdx.InputMultiplexer
 import com.badlogic.gdx.InputProcessor
 import com.badlogic.gdx.math.MathUtils
+import com.badlogic.gdx.scenes.scene2d.Stage
 import com.github.moonstruck.capooadventure.component.AttackComponent
 import com.github.moonstruck.capooadventure.component.MoveComponent
 import com.github.moonstruck.capooadventure.component.PlayerComponent
@@ -16,10 +17,11 @@ import com.github.quillraven.fleks.World
 class PlayerInputProcessor(
 
     world: World,
+    private val uiStage: Stage,
     private val moveCmps: ComponentMapper<MoveComponent> = world.mapper(),
     private val attackCmps: ComponentMapper<AttackComponent> = world.mapper(),
 
-): KtxInputAdapter {
+    ): KtxInputAdapter {
     private val playerEntities = world.family(allOf = arrayOf(PlayerComponent::class))
     init {
         gdxInputProcessor(this)
@@ -47,6 +49,9 @@ class PlayerInputProcessor(
             }
         }
         return true
+    }
+    fun inventory(){
+        uiStage.actors.get(1).isVisible = !uiStage.actors.get(1).isVisible
     }
 }
 

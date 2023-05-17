@@ -89,6 +89,6 @@ class GameModel(
         }
     }
     fun openInventory(){
-        stage.actors.get(0).isVisible = !stage.actors.get(0).isVisible
+        playerInputProcessor.inventory()
     }
 }
