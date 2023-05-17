@@ -20,7 +20,7 @@ blood
   index: -1
 energy
   rotate: false
-  xy: 185, 27
+  xy: 268, 59
   size: 42, 3
   orig: 42, 3
   offset: 0, 0
@@ -41,56 +41,56 @@ frame_fgd1
   index: -1
 frame_fgd2
   rotate: false
-  xy: 268, 42
+  xy: 271, 37
   size: 20, 20
   orig: 20, 20
   offset: 0, 0
   index: -1
 hat
   rotate: false
-  xy: 326, 46
+  xy: 203, 14
   size: 14, 16
   orig: 14, 16
   offset: 0, 0
   index: -1
 pants
   rotate: false
-  xy: 308, 50
+  xy: 142, 8
   size: 16, 12
   orig: 16, 12
   offset: 0, 0
   index: -1
 player
   rotate: false
-  xy: 217, 32
+  xy: 244, 32
   size: 25, 25
   orig: 25, 25
   offset: 0, 0
   index: -1
 shoe
   rotate: false
-  xy: 290, 48
+  xy: 160, 6
   size: 16, 14
   orig: 16, 14
   offset: 0, 0
   index: -1
 slime
   rotate: false
-  xy: 342, 49
+  xy: 219, 17
   size: 12, 13
   orig: 12, 13
   offset: 0, 0
   index: -1
 sword
   rotate: false
-  xy: 159, 4
+  xy: 185, 14
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 sword_update
   rotate: false
-  xy: 141, 4
+  xy: 293, 41
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
@@ -104,16 +104,16 @@ touch_attack
   index: -1
 touch_knob
   rotate: false
-  xy: 114, 11
+  xy: 217, 32
   size: 25, 25
   orig: 25, 25
   offset: 0, 0
   index: -1
 touch_open
   rotate: false
-  xy: 244, 37
-  size: 20, 20
-  orig: 20, 20
+  xy: 114, 10
+  size: 26, 26
+  orig: 26, 26
   offset: 0, 0
   index: -1
 touch_pad
