@@ -23,7 +23,9 @@ import ktx.scene2d.Scene2DSkin
 import ktx.scene2d.actors
 import com.github.moonstruck.capooadventure.CapooAdventure
 import com.github.moonstruck.capooadventure.Ui.View.gameView
+import com.github.moonstruck.capooadventure.Ui.View.inventoryView
 import com.github.moonstruck.capooadventure.Ui.model.GameModel
+import com.github.moonstruck.capooadventure.Ui.model.InventoryModel
 import com.github.moonstruck.capooadventure.component.*
 import com.github.moonstruck.capooadventure.component.FloatingTextComponent.*
 import com.github.moonstruck.capooadventure.input.PlayerInputProcessor
@@ -62,6 +64,7 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
             add<MoveSystem>()
             add<AttackSystem>()
             add<LootSystem>()
+            add<InventorySystem>()
             add<DeadSystem>()
             add<LifeSystem>()
             add<PhysicSystem>()
@@ -81,6 +84,9 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
 
         uiStage.actors {
             gameView(GameModel(eWorld,gameStage, playerInputProcessor = PlayerInputProcessor(eWorld)))
+            inventoryView(InventoryModel(eWorld,gameStage)){
+                this.isVisible=true
+            }
         }
 
         eWorld.systems.forEach { system ->

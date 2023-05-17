@@ -33,6 +33,7 @@ class AttackSystem(
     override fun onTickEntity(entity: Entity) {
         val attackCmp = attackCmps[entity]
 
+        println(attackCmp.doAttack)
         if(attackCmp.isReady && !attackCmp.doAttack)
         {
             //Character doesnt attack
@@ -47,6 +48,7 @@ class AttackSystem(
             return
         }
 
+
         attackCmp.delay -= deltaTime
         if(attackCmp.delay <= 0f && attackCmp.isAttacking){
             //deal damage to enemy
@@ -55,6 +57,7 @@ class AttackSystem(
             animationCmps.getOrNull(entity)?.let { aniCmp ->
                 stage.fire(EntityAttackEvent(aniCmp.actor.atlasKey))
             }
+
 
             val image = imageCmps[entity].image
             val physicCmp = physicCmps[entity]
@@ -115,10 +118,13 @@ class AttackSystem(
                     return@query true
                 }
         }
+        println(attackCmp.state)
+        println(attackCmp.doAttack)
         val isDone = animationCmps.getOrNull(entity)?.isAnimationDone ?:true
         if(isDone){
             attackCmp.state = AttackState.READY
         }
+
     }
     companion object{
         val AABB_RECT = Rectangle()

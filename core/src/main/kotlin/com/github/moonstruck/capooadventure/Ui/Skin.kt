@@ -32,7 +32,9 @@ enum class Drawables(
 
     TOUCH_PAD("touch_pad"),
     TOUCH_KNOB("touch_knob"),
-    TOUCH_ATTACK("touch_attack")
+    TOUCH_ATTACK("touch_attack"),
+
+    TEST_INVENTORY("frame_fgd2")
 }
 operator fun Skin.get(drawable: Drawables): Drawable = this.getDrawable(drawable.atlasKey)
 
@@ -99,6 +101,10 @@ fun loadSkin()
         imageButton {
             imageUp = skin[Drawables.TOUCH_ATTACK]
             imageDown = skin[Drawables.TOUCH_ATTACK]
+        }
+        imageButton("inventoryOpen"){
+            imageUp = skin[Drawables.TEST_INVENTORY]
+            imageDown = skin[Drawables.TEST_INVENTORY]
         }
     }
 }

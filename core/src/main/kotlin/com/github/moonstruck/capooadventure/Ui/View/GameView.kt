@@ -29,6 +29,7 @@ class GameView(
     private val playerInfo : TouchpadInfo
     private val enemyInfo : TouchpadInfo
     private val popupLabel : Label
+    private val inventoryOpen : ImageButton
 
     init {
         //ui
@@ -67,6 +68,13 @@ class GameView(
             }
             it.right().bottom()
         }
+        inventoryOpen = imageButton("inventoryOpen") {
+            this.onClick {
+                model.openInventory()
+            }
+            it.right().bottom()
+            }
+
 
 
 

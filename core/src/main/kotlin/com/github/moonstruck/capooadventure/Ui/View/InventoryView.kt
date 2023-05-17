@@ -147,7 +147,24 @@ class InventoryView (
         targetSlot.item(itemModel)
 
         //update model
+        val sourceItem = sourceSlot.itemModel
+        if(sourceSlot.isGear){
+            model.equip(itemModel,false)
+            if(sourceItem!=null){
+                model.equip(sourceItem,true)
+            }
+        }else if(sourceItem!= null){
+            model.inventoryItem(invSlots.indexOf(sourceSlot),sourceItem)
+        }
 
+        if(targetSlot.isGear){
+            if(sourceItem!=null){
+                model.equip(sourceItem,false)
+            }
+            model.equip(itemModel,true)
+        }else{
+            model.inventoryItem(invSlots.indexOf(targetSlot),itemModel)
+        }
     }
 
     fun item(itemModel: ItemModel) {
@@ -157,7 +174,7 @@ class InventoryView (
         gearSlots.firstOrNull{it.supportedCategory == itemModel.category}?.item(itemModel)
     }
 }
-//learn from last video - he said
+
 @Scene2dDsl
 fun <S> KWidget<S>.inventoryView (
     model: InventoryModel,

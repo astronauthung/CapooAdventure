@@ -28,8 +28,8 @@ class CapooAdventure : KtxGame<KtxScreen>() , EventListener{
         addScreen(GameScreen(this))
         addScreen(UiScreen())
         addScreen(InventoryUiScreen())
-//        setScreen<GameScreen>()
-        setScreen<InventoryUiScreen>()
+        setScreen<GameScreen>()
+//        setScreen<InventoryUiScreen>()
 //        setScreen<UiScreen>()
 
     }

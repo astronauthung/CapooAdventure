@@ -13,12 +13,13 @@ import com.github.moonstruck.capooadventure.event.EntityLootEvent
 import com.github.moonstruck.capooadventure.input.PlayerInputProcessor
 import com.github.quillraven.fleks.ComponentMapper
 import com.github.quillraven.fleks.Entity
+import com.github.quillraven.fleks.Qualifier
 import com.github.quillraven.fleks.World
 
 
 class GameModel(
     world: World,
-    stage: Stage,
+    @Qualifier("UiStage")private val stage: Stage,
     private val playerInputProcessor: PlayerInputProcessor,
 ) : PropertyChangeSource(),EventListener{
 
@@ -81,8 +82,13 @@ class GameModel(
     fun clickAttack(){
         playerEntities.forEach {
             with(attackCmps[it]){
+                startAttack()
                 doAttack = true
+                delay = 0f
             }
         }
+    }
+    fun openInventory(){
+        stage.actors.get(0).isVisible = !stage.actors.get(0).isVisible
     }
 }
