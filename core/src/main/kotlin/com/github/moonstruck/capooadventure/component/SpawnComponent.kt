@@ -21,6 +21,8 @@ data class SpawnCfg (
     val physicScaling : Vector2 = vec2(1f,1f),
     val physicOffset : Vector2 = vec2(0f,0f),
     val bodyType: BodyType = BodyType.DynamicBody,
+    val hasLight: Boolean = false,
+    val physicCategory: Short = 0,
 )
 class SpawnComponent {
     var name : String = ""

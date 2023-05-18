@@ -39,6 +39,7 @@ class CapooAdventure : KtxGame<KtxScreen>() , EventListener{
     override fun resize(width: Int, height: Int) {
         gameStage.viewport.update(width, height, true)
         uiStage.viewport.update(width, height, true)
+        super.resize(width, height)
     }
 
     override fun render() {

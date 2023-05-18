@@ -1,7 +1,10 @@
 package com.github.moonstruck.capooadventure.screen
 
 
+import box2dLight.Light
+import box2dLight.RayHandler
 import com.badlogic.gdx.ai.GdxAI
+import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.maps.tiled.TiledMap
 import com.badlogic.gdx.maps.tiled.TmxMapLoader
@@ -25,7 +28,6 @@ import com.github.moonstruck.capooadventure.Ui.View.*
 import com.github.moonstruck.capooadventure.Ui.model.GameModel
 import com.github.moonstruck.capooadventure.Ui.model.InventoryModel
 import com.github.moonstruck.capooadventure.component.*
-import com.github.moonstruck.capooadventure.component.FloatingTextComponent.*
 import com.github.moonstruck.capooadventure.input.PlayerInputProcessor
 import com.github.moonstruck.capooadventure.input.gdxInputProcessor
 import com.github.quillraven.fleks.ComponentMapper
@@ -38,6 +40,15 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
     private val phWorld = createWorld(gravity = vec2()).apply {
         autoClearForces = false
     }
+    private val rayHandler = RayHandler(phWorld).apply {
+        //set loai anh sang
+        RayHandler.useDiffuseLight(true)
+
+        Light.setGlobalContactFilter(LightComponent.playerCategory, 1, LightComponent.enviromentCategory)
+
+        //set mau hoa tron
+        setAmbientLight(Color.ROYAL)
+    }
 
     private val eWorld = world{
         injectables {
@@ -45,6 +56,7 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
             add("GameStage",gameStage)
             add("UiStage",uiStage)
             add(textureAtlas)
+            add(rayHandler)
         }
 
         components {
@@ -53,6 +65,7 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
             add<FloatingTextComponent.Companion.FloatingTextComponentListener>()
             add<StateComponent.Companion.StateComponentListener>()
             add<AiComponent.Companion.AiComponentListener>()
+            add<LightComponent.Companion.LightComponentListener>()
         }
 
         systems {
@@ -66,6 +79,7 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
             add<DeadSystem>()
             add<LifeSystem>()
             add<PhysicSystem>()
+            add<LightSystem>()
             add<AnimationSystem>()
             add<StateSystem>()
             add<AiSystem>()
@@ -129,6 +143,14 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
 
     override fun resume() = pauseWorld(false)
 
+    override fun resize(width: Int, height: Int) {
+        val screenX = gameStage.viewport.screenX
+        val screenY = gameStage.viewport.screenY
+        val screenW = gameStage.viewport.screenWidth
+        val screenH = gameStage.viewport.screenHeight
+        rayHandler.useCustomViewport(screenX, screenY, screenW, screenH)
+    }
+
     override fun render(delta: Float) {
         val dt = delta.coerceAtMost(0.25f)
         GdxAI.getTimepiece().update(dt)
@@ -140,6 +162,7 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
         eWorld.dispose()
         currentMap.disposeSafely()
         phWorld.disposeSafely()
+        rayHandler.disposeSafely()
         disposeSkin()
     }
 

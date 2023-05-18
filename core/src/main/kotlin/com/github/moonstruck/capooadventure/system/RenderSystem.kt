@@ -1,5 +1,6 @@
 package com.github.moonstruck.capooadventure.system
 
+import box2dLight.RayHandler
 import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.maps.tiled.TiledMap
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer
@@ -22,6 +23,7 @@ import ktx.tiled.forEachLayer
 class RenderSystem(
     @Qualifier("GameStage") private val gameStage: Stage,
     @Qualifier("UiStage") private val uiStage: Stage,
+    private val rayHandler: RayHandler,
     private val imageCmps: ComponentMapper<ImageComponent>
 ) : EventListener, IteratingSystem(
     comparator = compareEntity { e1, e2 -> imageCmps[e1].compareTo(imageCmps[e2]) }
@@ -56,12 +58,15 @@ class RenderSystem(
                 }
             }
 
+        //setup light render
+        rayHandler.setCombinedMatrix(orthocam)
+        rayHandler.updateAndRender()
+
         uiStage.run {
             viewport.apply()
             act(deltaTime)
             draw()
         }
-
     }
 
     override fun onTickEntity(entity: Entity) {

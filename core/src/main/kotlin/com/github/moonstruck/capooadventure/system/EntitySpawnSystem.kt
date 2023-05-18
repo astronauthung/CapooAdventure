@@ -1,5 +1,7 @@
 package com.github.moonstruck.capooadventure.system
 
+import box2dLight.PointLight
+import box2dLight.RayHandler
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.graphics.g3d.model.Animation
 import com.badlogic.gdx.math.Vector2
@@ -30,6 +32,7 @@ class EntitySpawnSystem(
     private val phWorld: World,
     private val atlas: TextureAtlas,
     private val spawnCmps:ComponentMapper<SpawnComponent>,
+    private val rayHandler: RayHandler
 ) : EventListener, IteratingSystem() {
     private val cachedCfgs = mutableMapOf<String, SpawnCfg>()
     private val cachedSizes = mutableMapOf<AnimationActor, Vector2>()
@@ -60,14 +63,26 @@ class EntitySpawnSystem(
                     box(w,h,cfg.physicOffset) {
                         isSensor = cfg.bodyType != BodyDef.BodyType.StaticBody
                         userData = HIT_BOX_SENSOR
+                        filter.categoryBits = cfg.physicCategory
                     }
                     if (cfg.bodyType != BodyDef.BodyType.StaticBody) {
                         val collH = h * 0.4f
                         val collOffset = vec2().apply { set(cfg.physicOffset) }
                         collOffset.y -= h * 0.5f - collH * 0.5f
-                        box (w, collH, collOffset)
+                        box (w, collH, collOffset) {
+                            filter.categoryBits = cfg.physicCategory
+                        }
                     }
                 }
+                if (cfg.hasLight) {
+                    add <LightComponent> {
+                        distance =  5f..6.5f
+                        light = PointLight(rayHandler, 64, LightComponent.lightColor, distance.endInclusive, 0f, 0f).apply {
+                            this.attachToBody(physicCmp.body)
+                        }
+                    }
+                }
+
                 if (cfg.speedScaling > 0f) {
                     add<MoveComponent> {
                         speed = DEFAULT_SPEED * cfg.speedScaling
@@ -124,23 +139,29 @@ class EntitySpawnSystem(
                 attackExtraAttackRange= 0.6f,
                 attackScaling = 1.25f,
                 physicScaling =  vec2(0.3f,0.3f),
-                physicOffset = vec2(0f,-10f* UNIT_SCALE))
+                physicOffset = vec2(0f,-10f* UNIT_SCALE),
+                hasLight = true,
+                physicCategory = LightComponent.playerCategory)
             "Slime" -> SpawnCfg(AnimationActor.SLIME,
                 lifeScaling = 0.75f,
                 physicScaling =  vec2(0.3f,0.3f),
                 physicOffset = vec2(0f,-2f* UNIT_SCALE),
-                aiTreePath = "ai/slime.tree"
-            )
+                aiTreePath = "ai/slime.tree",
+                hasLight = true,
+                physicCategory = LightComponent.slimeCategory)
             "Chest" -> SpawnCfg(AnimationActor.CHEST,
                 bodyType = BodyDef.BodyType.StaticBody,
                 canAttack = false,
                 lifeScaling = 0f,
-                lootable = true)
+                lootable = true,
+                hasLight = true)
             "Chicken" -> SpawnCfg(AnimationActor.CHICKEN,
                 canAttack = false,
                 lifeScaling = 0.75f,
                 physicScaling =  vec2(0.3f,0.3f),
-                physicOffset = vec2(0f,-2f* UNIT_SCALE))
+                physicOffset = vec2(0f,-2f* UNIT_SCALE),
+                hasLight = true,
+                physicCategory = LightComponent.slimeCategory)
 
             else -> gdxError("Type $name has no SpawnCfg setup")
         }

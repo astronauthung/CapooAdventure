@@ -48,7 +48,9 @@ class PhysicComponent {
                                 vec2(bodyW, 0f),
                                 vec2(bodyW, bodyH),
                                 vec2(0f, bodyH),
-                            )
+                            ) {
+                                filter.categoryBits = LightComponent.enviromentCategory
+                            }
                             TMP_VEC.set(bodyW*0.5f,bodyH*0.5f)
                             box(SPAWN_AREA_SIZE + 4f, SPAWN_AREA_SIZE + 4f, TMP_VEC){ isSensor = true}
                         }

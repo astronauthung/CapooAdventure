@@ -239,9 +239,9 @@
   </data>
  </layer>
  <objectgroup id="4" name="entities">
-  <object id="3" name="Slime" gid="124" x="311.666" y="142.417" width="32" height="32"/>
-  <object id="6" name="Slime" gid="124" x="277.166" y="146" width="32" height="32"/>
-  <object id="7" name="Slime" gid="124" x="290" y="124.167" width="32" height="32"/>
+  <object id="3" name="Slime" gid="124" x="49.3327" y="139.75" width="32" height="32"/>
+  <object id="6" name="Slime" gid="124" x="130.833" y="196.333" width="32" height="32"/>
+  <object id="7" name="Slime" gid="124" x="344" y="177.5" width="32" height="32"/>
   <object id="9" name="Player" gid="129" x="13.5" y="134.75" width="32" height="32"/>
   <object id="26" name="Chest" gid="125" x="241.333" y="177.333" width="16" height="16"/>
   <object id="29" name="Slime" gid="124" x="295.5" y="212" width="32" height="32"/>
