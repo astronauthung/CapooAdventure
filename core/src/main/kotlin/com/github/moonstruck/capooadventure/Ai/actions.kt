@@ -57,8 +57,8 @@ class wanderTask : Action(){
                 startPos.set(entity.position)
             }
             targetPos.set(startPos)
-            targetPos.x += MathUtils.random(-3f,3f)
-            targetPos.y += MathUtils.random(-3f,3f)
+            targetPos.x += MathUtils.random(-1f,1f)
+            targetPos.y += MathUtils.random(-1f,1f)
             entity.moveTo(targetPos)
             return Status.RUNNING
         }

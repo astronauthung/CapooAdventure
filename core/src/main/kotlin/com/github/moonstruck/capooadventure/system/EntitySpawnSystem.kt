@@ -161,7 +161,7 @@ class EntitySpawnSystem(
                 physicScaling =  vec2(0.3f,0.3f),
                 physicOffset = vec2(0f,-2f* UNIT_SCALE),
                 hasLight = true,
-                physicCategory = LightComponent.slimeCategory)
+                physicCategory = LightComponent.slimeCategory,)
 
             else -> gdxError("Type $name has no SpawnCfg setup")
         }
