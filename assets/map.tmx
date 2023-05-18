@@ -252,11 +252,11 @@
   <object id="51" name="Chicken" gid="133" x="136.5" y="121.5" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="5" name="portals">
-  <object id="53" x="344.943" y="248.829" width="28.5227" height="26.1136"/>
-  <object id="55" x="344.625" y="281" width="28.875" height="5.25">
+  <object id="53" x="344.943" y="238.829" width="28.5227" height="26.1136"/>
+  <object id="55" x="344.875" y="278.5" width="28.875" height="5.25">
    <properties>
     <property name="toMap" value="map2"/>
-    <property name="toPortal" type="int" value="53"/>
+    <property name="toPortal" type="int" value="59"/>
    </properties>
   </object>
  </objectgroup>

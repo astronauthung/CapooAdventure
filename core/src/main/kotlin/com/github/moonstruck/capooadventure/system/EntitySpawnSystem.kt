@@ -14,7 +14,7 @@ import com.badlogic.gdx.utils.Scaling
 import com.github.moonstruck.capooadventure.CapooAdventure.Companion.UNIT_SCALE
 import com.github.moonstruck.capooadventure.actor.FlipImage
 import com.github.moonstruck.capooadventure.component.*
-import com.github.moonstruck.capooadventure.component.PhysicComponent.Companion.physicsCmpFromImage
+import com.github.moonstruck.capooadventure.component.PhysicComponent.Companion.bodyFromImageAndCfg
 import com.github.moonstruck.capooadventure.event.MapChangeEvent
 import com.github.quillraven.fleks.*
 import ktx.app.gdxError
@@ -36,7 +36,7 @@ class EntitySpawnSystem(
 ) : EventListener, IteratingSystem() {
     private val cachedCfgs = mutableMapOf<String, SpawnCfg>()
     private val cachedSizes = mutableMapOf<AnimationActor, Vector2>()
-
+    private val playerEntities = world.family(allOf = arrayOf(PlayerComponent::class))
     override fun onTickEntity(entity: Entity) {
         with(spawnCmps[entity]) {
             val cfg = spawnCfg(name)
@@ -54,26 +54,11 @@ class EntitySpawnSystem(
                     nextAnimation(cfg.model, AnimationType.IDLE)
                 }
 
-                val physicCmp = physicsCmpFromImage(phWorld, imageCmp.image, cfg.bodyType) {phCmp, width, height ->
-                    val w = width*cfg.physicScaling.x
-                    val h = height*cfg.physicScaling.y
-                    phCmp.offset.set(cfg.physicOffset)
-                    phCmp.size.set(w,h)
-
-                    box(w,h,cfg.physicOffset) {
-                        isSensor = cfg.bodyType != BodyDef.BodyType.StaticBody
-                        userData = HIT_BOX_SENSOR
-                        filter.categoryBits = cfg.physicCategory
-                    }
-                    if (cfg.bodyType != BodyDef.BodyType.StaticBody) {
-                        val collH = h * 0.4f
-                        val collOffset = vec2().apply { set(cfg.physicOffset) }
-                        collOffset.y -= h * 0.5f - collH * 0.5f
-                        box (w, collH, collOffset) {
-                            filter.categoryBits = cfg.physicCategory
-                        }
-                    }
+                val physicCmp = add<PhysicComponent>(){
+                    body = bodyFromImageAndCfg(phWorld,imageCmp.image,cfg)
                 }
+
+
                 if (cfg.hasLight) {
                     add <LightComponent> {
                         distance =  5f..6.5f
@@ -135,13 +120,7 @@ class EntitySpawnSystem(
     }
     private fun spawnCfg(name:String): SpawnCfg = cachedCfgs.getOrPut(name) {
         when (name){
-            "Player" -> SpawnCfg(AnimationActor.PLAYER,
-                attackExtraAttackRange= 0.6f,
-                attackScaling = 1.25f,
-                physicScaling =  vec2(0.3f,0.3f),
-                physicOffset = vec2(0f,-10f* UNIT_SCALE),
-                hasLight = true,
-                physicCategory = LightComponent.playerCategory)
+            "Player" -> PLAYER_CFG
             "Slime" -> SpawnCfg(AnimationActor.SLIME,
                 lifeScaling = 0.75f,
                 physicScaling =  vec2(0.3f,0.3f),
@@ -173,6 +152,11 @@ class EntitySpawnSystem(
                 val entityLayer = event.map.layer("entities")
                 entityLayer.objects.forEach{ mapObj ->
                     val name = mapObj.name ?: gdxError("MapObject $mapObj does not have a type!")
+
+                    if(name == "Player" && playerEntities.isNotEmpty){
+                        return@forEach
+                    }
+
                     world.entity{
                         add<SpawnComponent> {
                             this.name = name
@@ -197,5 +181,13 @@ class EntitySpawnSystem(
     companion object {
         const val HIT_BOX_SENSOR = "Hitbox"
         const val AI_SENSOR = "AiSensor"
+
+        val PLAYER_CFG = SpawnCfg(AnimationActor.PLAYER,
+            attackExtraAttackRange= 0.6f,
+            attackScaling = 1.25f,
+            physicScaling =  vec2(0.3f,0.3f),
+            physicOffset = vec2(0f,-10f* UNIT_SCALE),
+            hasLight = true,
+            physicCategory = LightComponent.playerCategory)
     }
 }

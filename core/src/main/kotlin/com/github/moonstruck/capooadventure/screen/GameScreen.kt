@@ -36,7 +36,7 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
     private val gameStage = game.gameStage
     private val uiStage = game.uiStage
     private val textureAtlas = TextureAtlas("game.atlas")
-    private var currentMap: TiledMap? = null
+
     private val phWorld = createWorld(gravity = vec2()).apply {
         autoClearForces = false
     }
@@ -72,6 +72,7 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
             add<EntitySpawnSystem>()
             add<CollisionSpawnSystem>()
             add<CollisionDespawnSystem>()
+            add<PortalSystem>()
             add<MoveSystem>()
             add<AttackSystem>()
             add<LootSystem>()
@@ -113,8 +114,7 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
     override fun show() {
         log.debug { "GameScreen get shown" }
 
-        currentMap = TmxMapLoader().load("map.tmx")
-        gameStage.fire(MapChangeEvent(currentMap!!))
+        eWorld.system<PortalSystem>().setMap("map.tmx")
 
 //        uiStage.actors {
 //            gameView(GameModel(eWorld,gameStage, PlayerInputProcessor(eWorld)))
@@ -160,7 +160,6 @@ class GameScreen(game : CapooAdventure) : KtxScreen {
     override fun dispose() {
         textureAtlas.disposeSafely()
         eWorld.dispose()
-        currentMap.disposeSafely()
         phWorld.disposeSafely()
         rayHandler.disposeSafely()
         disposeSkin()

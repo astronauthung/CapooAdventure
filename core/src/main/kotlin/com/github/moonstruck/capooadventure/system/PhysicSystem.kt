@@ -17,7 +17,9 @@ class  PhysicSystem (
     private val physicCmps: ComponentMapper<PhysicComponent>,
     private val tiledCmps: ComponentMapper<TiledComponent>,
     private val collisionCmps: ComponentMapper<CollisionComponent>,
-    private val aiCmps : ComponentMapper<AiComponent>
+    private val aiCmps : ComponentMapper<AiComponent>,
+    private val portalCmps : ComponentMapper<PortalComponent>,
+    private val playerCmps : ComponentMapper<PlayerComponent>,
     //1/60 -> run 60 frames/s
 ) : ContactListener, IteratingSystem(interval = Fixed(1 / 60f)) {
 
@@ -92,7 +94,19 @@ class  PhysicSystem (
             isEntityBAiSensor && isEntityATiledCollisionFixture -> {
                 aiCmps[entityB].nearbyEntities += entityA
             }
+
+            //portal collision handle
+
+            entityA in portalCmps && entityB in playerCmps && !contact.fixtureB.isSensor -> {
+                portalCmps[entityA].triggerEntities += entityB
+            }
+
+            entityB in portalCmps && entityA in playerCmps && !contact.fixtureA.isSensor -> {
+                portalCmps[entityB].triggerEntities += entityA
+            }
         }
+
+
     }
 
     override fun endContact(contact: Contact) {

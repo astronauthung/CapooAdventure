@@ -31,11 +31,15 @@ class AudioSystem : EventListener, IntervalSystem() {
             is MapChangeEvent -> {
                 event.map.propertyOrNull<String>("music")?.let { path ->
                     log.debug {"Changing music to $path"}
-                    music = musicCache.getOrPut(path) {
+                    val newMusic = musicCache.getOrPut(path) {
                         Gdx.audio.newMusic(Gdx.files.internal(path)).apply {
                             isLooping = true
                         }
                     }
+                    if(music!= null && newMusic != music){
+                        music?.stop()
+                    }
+                    music = newMusic
                     music?.play()
                 }
                 return true

@@ -80,6 +80,7 @@ class GameView(
 
 
 
+
         //data binding
         model.onPropertyChange(GameModel::playerLife){ playerLife ->
             playerLife(playerLife)

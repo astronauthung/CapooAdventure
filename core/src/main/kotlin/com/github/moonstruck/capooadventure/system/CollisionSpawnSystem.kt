@@ -12,7 +12,6 @@ import com.github.quillraven.fleks.IteratingSystem
 import com.badlogic.gdx.scenes.scene2d.EventListener
 import com.github.moonstruck.capooadventure.component.CollisionComponent
 import com.github.moonstruck.capooadventure.component.PhysicComponent.Companion.physicCmpFromShape2D
-import com.github.moonstruck.capooadventure.component.PhysicComponent.Companion.physicsCmpFromImage
 import com.github.moonstruck.capooadventure.component.TiledComponent
 import com.github.moonstruck.capooadventure.event.CollisionDespawnEvent
 import com.github.moonstruck.capooadventure.event.MapChangeEvent

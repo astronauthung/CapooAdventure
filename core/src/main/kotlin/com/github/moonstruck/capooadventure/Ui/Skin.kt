@@ -111,6 +111,7 @@ fun loadSkin()
             imageDown = skin[Drawables.TEST_INVENTORY]
 
         }
+
     }
 }
 
