@@ -11,7 +11,7 @@ data class AttackComponent (
     var damage: Int = 0,
     var delay : Float = 0f,
     var maxDelay : Float = 0f,
-    var extraRange : Float = 0f,
+    var extraRange : Float = 2f,
     ){
     val isReady:Boolean
         get() = state == AttackState.READY

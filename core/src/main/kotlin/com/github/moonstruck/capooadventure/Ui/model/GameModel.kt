@@ -81,9 +81,7 @@ class GameModel(
     }
     fun clickAttack(){
         playerEntities.forEach {
-            with(attackCmps[it]){
-                doAttack = true
-            }
+            attackCmps[it].doAttack = true
         }
     }
     fun openInventory(){

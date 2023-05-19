@@ -33,14 +33,13 @@ class AttackSystem(
     override fun onTickEntity(entity: Entity) {
         val attackCmp = attackCmps[entity]
 
-        println(attackCmp.doAttack)
         if(attackCmp.isReady && !attackCmp.doAttack)
         {
             //Character doesnt attack
             return
         }
 
-        if(attackCmp.isPrepared && attackCmp.doAttack){
+        if(attackCmp.state == AttackState.PREPARE && attackCmp.doAttack){
             //Character want to attack
             attackCmp.doAttack = false
             attackCmp.state =AttackState.ATTACKING
@@ -50,7 +49,7 @@ class AttackSystem(
 
 
         attackCmp.delay -= deltaTime
-        if(attackCmp.delay <= 0f && attackCmp.isAttacking){
+        if(attackCmp.delay <= 0f && attackCmp.state == AttackState.ATTACKING){
             //deal damage to enemy
             attackCmp.state = AttackState.DEAL_DAMAGE
 
@@ -61,6 +60,7 @@ class AttackSystem(
 
             val image = imageCmps[entity].image
             val physicCmp = physicCmps[entity]
+
             val attackLeft = image.flipX
             val (x, y) = physicCmp.body.position
             val (offX, offY) = physicCmp.offset
@@ -96,7 +96,7 @@ class AttackSystem(
 
                 //no friendly fire
                 val isAttackerPlayer = entity in playerCmps
-                if(isAttackerPlayer && fixtureEntity !in playerCmps){
+                if(isAttackerPlayer && fixtureEntity in playerCmps){
                     return@query true
                 }else if(!isAttackerPlayer && fixtureEntity !in playerCmps){
                     return@query true
@@ -107,9 +107,7 @@ class AttackSystem(
                     lifeCmps.getOrNull(it)?.let { lifeCmp ->
                         lifeCmp.takeDamage += attackCmp.damage * MathUtils.random(0.9f, 1.2f)
                     }
-
-
-                    if (entity in playerCmps) {
+                    if (isAttackerPlayer) {
                         lootCmps.getOrNull(it)?.let { lootCmp ->
                             lootCmp.interactEntity = entity
                         }
@@ -118,8 +116,6 @@ class AttackSystem(
                     return@query true
                 }
         }
-        println(attackCmp.state)
-        println(attackCmp.doAttack)
         val isDone = animationCmps.getOrNull(entity)?.isAnimationDone ?:true
         if(isDone){
             attackCmp.state = AttackState.READY
